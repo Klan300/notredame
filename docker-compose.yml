@@ -1,0 +1,36 @@
+version: "3.1"
+services:
+    warehouse_cloning:
+        build: ./warehouse_cloning
+
+        depends_on:
+        - warehouse_mongo
+
+    
+    warehouse_mongo:
+        build: ./warehouse_mongo
+        
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: admin
+            MONGO_INITDB_ROOT_PASSWORD: Admin123
+
+        ports:
+            - "27017:27017"
+
+    mongo-express:
+        image: mongo-express
+
+        restart: always
+
+        environment:
+            ME_CONFIG_MONGODB_SERVER: warehouse_mongo
+            ME_CONFIG_BASICAUTH_USERNAME: renatogroffe
+            ME_CONFIG_BASICAUTH_PASSWORD: MongoExpress2019!
+            ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+            ME_CONFIG_MONGODB_ADMINPASSWORD: Admin123
+        
+        ports:
+            - 8080:8081
+            
+        depends_on:
+            - warehouse_mongo
