@@ -2,14 +2,14 @@ package handler
 
 import (
 	"net/http"
-	// "time"
+
 	"fmt"
 	"log"
 
 	"go.mongodb.org/mongo-driver/bson"
 
 	"github.com/dgrijalva/jwt-go"
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 
 	"ava.fund/alpha/Post-Covid/warehouse_api/src/utils"
 )
@@ -19,7 +19,7 @@ func Token( c echo.Context) error {
 	username := c.QueryParam("username")
 
 	// Throws unauthorized error
-	if username != username {
+	if !utils.Config.Usernames[username] {
 		return echo.ErrUnauthorized
 	}
 
@@ -48,6 +48,9 @@ func GetProfile( c echo.Context) error {
 	exchange := c.QueryParam("exchange")
 
 	collectionName := fmt.Sprintf("%s_profile",exchange)
+
+	fmt.Println(collectionName)
+
 	collection,ctx := utils.ConnectDB(collectionName)
 
 	filter := bson.M{"symbol" : symbol}
@@ -55,7 +58,7 @@ func GetProfile( c echo.Context) error {
 	err := collection.FindOne( ctx, filter).Decode(&data)
 
 	if err != nil {
-		fmt.Println("err")
+		fmt.Println(err)
 		return c.NoContent(http.StatusNotFound)
 	}
 
@@ -78,7 +81,7 @@ func GetFinancials( c echo.Context) error {
 	fmt.Println(collection.Name)
 
 	symbol := c.QueryParam("symbol")
-	frequency := c.Param("freq")
+	frequency := c.Param("frequency")
 	statement := c.Param("statement")
 
 	filter := bson.M{

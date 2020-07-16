@@ -8,7 +8,7 @@ import (
 
 type ConfigDefinition struct {
 	
-	Usernames []string
+	Usernames map[string]bool
 
 	Secret string
 
@@ -17,7 +17,12 @@ type ConfigDefinition struct {
         Database string
         Username string
         Password string
-	} 
+    }
+    
+    Target struct {
+        Host string
+    }
+    
 }
 
 

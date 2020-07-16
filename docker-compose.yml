@@ -1,11 +1,22 @@
 version: "3.1"
 services:
+
+    warehouse_api:
+        build: ./warehouse_api
+        image: warehouse_api:2.1
+
+        depends_on: 
+            - warehouse_mongo
+
+        ports: 
+            - "1323:1323"
+
     warehouse_cloning:
         build: ./warehouse_cloning
         image: warehouse_cloning:2.2
 
         depends_on:
-        - warehouse_mongo
+            - warehouse_mongo
 
     
     warehouse_mongo:

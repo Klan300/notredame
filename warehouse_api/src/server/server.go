@@ -1,11 +1,11 @@
 package main
 
 import (
-	"os"
 	"fmt"
+	"os"
 
-	"github.com/labstack/echo"
-	"github.com/labstack/echo/middleware"
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 
 	"ava.fund/alpha/Post-Covid/warehouse_api/src/handler"
 	"ava.fund/alpha/Post-Covid/warehouse_api/src/utils"
@@ -21,22 +21,21 @@ func main() {
 
 	e := echo.New()
 
-	e.POST("/token",handler.Token)
-
 	// Middleware
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
-	e.Debug = true
+  
+
+	e.POST("/token",handler.Token)
 	
 	api := e.Group("/api")
 
-	// Configure middleware with the custom claims type
 	api.Use(middleware.JWT([]byte(utils.Config.Secret)))
 
 	api.GET("/profile",handler.GetProfile)
-	api.GET("/:balancesheet/:frequency/financials", handler.GetFinancials)
+	api.GET("/:statement/:frequency/financials", handler.GetFinancials)
 	api.GET("/candle",handler.GetCandle)
 
-	e.Logger.Fatal(e.Start(":8000"))
+	e.Logger.Fatal(e.Start(utils.Config.Target.Host))
 }
 
