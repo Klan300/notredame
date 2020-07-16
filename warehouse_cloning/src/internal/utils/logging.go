@@ -1,12 +1,13 @@
 package utils
 
 import (
-    "fmt"
-    "io"
-    "log"
-    "os"
-    "time"
-    "strings"
+	"fmt"
+	"io"
+	"log"
+	"os"
+	"path/filepath"
+	"strings"
+	"time"
 )
 
 func Debug(message string, arguments ...interface{}){
@@ -35,13 +36,19 @@ func LoadLoggingConfig() {
 
     if Config.Logging.Dirname != "" {
 
-        fileName        := fmt.Sprintf("%s/%s.log", Config.Logging.Dirname, time.Now().Format("2006-01-02"))
+        rootDirname, err := filepath.Abs(filepath.Dir(os.Args[0]))
+        if err != nil {
+            log.Panicf("[log.go] %s\n", err)
+        }
+
+        fileName        := fmt.Sprintf("%s.log", time.Now().Format("2006-01-02"))
+        filePath        := filepath.Join(rootDirname, Config.Logging.Dirname, fileName)
         fileOperations  := os.O_CREATE | os.O_APPEND | os.O_WRONLY
 
         var filePermissions os.FileMode
         filePermissions = 0644
 
-        file, err := os.OpenFile(fileName, fileOperations, filePermissions)
+        file, err := os.OpenFile(filePath, fileOperations, filePermissions)
         if err != nil {
            log.Panicf("[log.go] %s\n", err)
         }

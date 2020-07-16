@@ -1299,3 +1299,552 @@
 2020/07/16 14:11:03 [consumer.go] Too many requests. Wait for 1m0s 
 2020/07/16 14:11:03 [consumer.go] Too many requests. Wait for 1m0s 
 2020/07/16 14:11:03 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:08:55 [main.go] Begin
+2020/07/16 15:08:55 [reader.go] Begin
+2020/07/16 15:08:55 [database.go] Begin
+2020/07/16 15:08:55 [database.go] Create a database client
+2020/07/16 15:08:55 [database.go] Create a connection to mongodb://post-covid_warehouse_mongo_1:27017
+2020/07/16 15:09:37 [main.go] Begin
+2020/07/16 15:09:37 [reader.go] Begin
+2020/07/16 15:09:37 [database.go] Begin
+2020/07/16 15:09:37 [database.go] Create a database client
+2020/07/16 15:09:37 [database.go] Create a connection to mongodb://localhost:27017
+2020/07/16 15:09:45 [main.go] Begin
+2020/07/16 15:09:45 [reader.go] Begin
+2020/07/16 15:09:45 [database.go] Begin
+2020/07/16 15:09:45 [database.go] Create a database client
+2020/07/16 15:09:45 [database.go] Create a connection to mongodb://localhost:27017
+2020/07/16 15:10:09 [reader.go] BulkWrite: &{0 8930 8930 0 0 map[]}
+2020/07/16 15:10:10 [reader.go] BulkWrite: &{0 918 918 0 0 map[]}
+2020/07/16 15:10:16 [reader.go] BulkWrite: &{0 4094 4094 0 0 map[]}
+2020/07/16 15:10:16 [reader.go] BulkWrite: &{0 52 52 0 0 map[]}
+2020/07/16 15:10:21 [reader.go] BulkWrite: &{0 3872 3872 0 0 map[]}
+2020/07/16 15:10:25 [reader.go] BulkWrite: &{0 3125 3125 0 0 map[]}
+2020/07/16 15:10:27 [reader.go] BulkWrite: &{0 1514 1514 0 0 map[]}
+2020/07/16 15:10:30 [reader.go] BulkWrite: &{0 2752 2752 0 0 map[]}
+2020/07/16 15:10:31 [reader.go] BulkWrite: &{0 1545 1545 0 0 map[]}
+2020/07/16 15:10:34 [reader.go] BulkWrite: &{0 2290 2290 0 0 map[]}
+2020/07/16 15:10:34 [reader.go] End
+2020/07/16 15:10:34 [reader.go] Disconnect from database server
+2020/07/16 15:10:34 [producer.go] Begin
+2020/07/16 15:10:34 [producer.go] Create a request channel
+2020/07/16 15:10:34 [consumer.go] Begin
+2020/07/16 15:10:34 [consumer.go] Begin
+2020/07/16 15:10:34 [consumer.go] Begin
+2020/07/16 15:10:34 [consumer.go] Begin
+2020/07/16 15:10:34 [consumer.go] Begin
+2020/07/16 15:10:34 [consumer.go] Begin
+2020/07/16 15:10:34 [consumer.go] Begin
+2020/07/16 15:10:34 [consumer.go] Begin
+2020/07/16 15:10:34 [consumer.go] Begin
+2020/07/16 15:10:34 [consumer.go] Begin
+2020/07/16 15:10:34 [writer.go] Begin
+2020/07/16 15:10:34 [database.go] Begin
+2020/07/16 15:10:34 [database.go] Create a database client
+2020/07/16 15:10:34 [database.go] Create a connection to mongodb://localhost:27017
+2020/07/16 15:10:34 [writer.go] End
+2020/07/16 15:10:34 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:34 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:34 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:34 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:34 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:34 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:34 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:35 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:35 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:35 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:35 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:35 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:35 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:35 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:35 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:35 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:35 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:35 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:35 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:35 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:35 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:35 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:35 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:35 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:35 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:35 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:35 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:36 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:36 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100b7cc85982bcf0402ac9")}
+2020/07/16 15:10:36 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:36 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:36 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:36 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:36 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:36 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:36 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:36 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:36 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:36 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100b7cc85982bcf0402ad4")}
+2020/07/16 15:10:36 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:36 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:36 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:36 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:36 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:36 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:36 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:36 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:37 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:37 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:37 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:37 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:37 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:37 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:37 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:37 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100b7dc85982bcf0402ae5")}
+2020/07/16 15:10:37 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:37 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:37 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:37 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:37 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:37 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:37 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:37 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:37 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:37 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:37 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:38 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100b7ec85982bcf0402af2")}
+2020/07/16 15:10:38 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:38 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:38 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:38 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:38 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100b7ec85982bcf0402af8")}
+2020/07/16 15:10:38 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:38 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:38 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:38 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:38 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:38 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:38 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:38 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:38 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:38 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:38 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:38 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:38 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:38 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:38 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:39 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:39 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:39 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:39 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:39 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:39 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:39 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:39 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:39 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:39 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:39 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:39 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:39 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:39 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100b7fc85982bcf0402b16")}
+2020/07/16 15:10:39 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:39 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:39 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100b7fc85982bcf0402b1a")}
+2020/07/16 15:10:39 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:39 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:39 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:39 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100b80c85982bcf0402b2d")}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:40 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:41 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:41 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:41 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:41 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:41 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:41 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:41 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:41 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:41 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:41 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:41 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:41 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100b81c85982bcf0402b44")}
+2020/07/16 15:10:41 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:41 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:41 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100b81c85982bcf0402b48")}
+2020/07/16 15:10:41 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:41 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:41 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:41 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:10:42 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:10:42 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:10:42 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:10:42 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:10:42 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:10:42 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:10:42 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:10:42 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:10:42 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:10:42 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100b82c85982bcf0402b4e")}
+2020/07/16 15:10:42 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:11:42 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:42 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:42 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:42 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:42 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:42 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:43 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:43 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:43 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:43 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:43 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:43 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:43 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:43 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:43 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:43 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:43 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:43 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:43 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:43 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:43 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:43 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:43 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:43 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:43 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:44 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:44 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:44 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:44 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:44 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:44 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:44 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:44 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:44 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:44 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:44 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:44 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:44 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:44 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100bc0c85982bcf0402b95")}
+2020/07/16 15:11:44 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:44 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:44 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100bc0c85982bcf0402b99")}
+2020/07/16 15:11:44 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:44 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:44 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:44 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100bc1c85982bcf0402ba8")}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100bc1c85982bcf0402bb3")}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:45 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100bc2c85982bcf0402bc8")}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:46 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:47 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:47 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:47 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:47 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:47 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100bc3c85982bcf0402bd7")}
+2020/07/16 15:11:47 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:47 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:47 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:47 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:47 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:47 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:47 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:47 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:47 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:47 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:47 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:47 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100bc3c85982bcf0402be4")}
+2020/07/16 15:11:47 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:47 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:47 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:47 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:48 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:48 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:48 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:48 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:48 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:48 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:48 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:48 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:48 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:48 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:48 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100bc4c85982bcf0402bf4")}
+2020/07/16 15:11:48 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:48 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:48 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:48 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:48 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:48 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:48 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:48 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100bc5c85982bcf0402c09")}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100bc5c85982bcf0402c0e")}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:49 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:50 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:50 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:50 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:11:50 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100bc6c85982bcf0402c19")}
+2020/07/16 15:11:50 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:11:50 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:11:50 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:11:50 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:11:50 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:11:50 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:11:50 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:11:50 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:11:50 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:11:51 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100bc7c85982bcf0402c1b")}
+2020/07/16 15:11:51 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:12:51 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:51 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:51 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:51 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:51 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:51 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:51 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:51 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:51 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:51 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:51 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:51 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:51 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:51 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:51 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:51 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:51 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:51 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100c04c85982bcf0402c6f")}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:52 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100c04c85982bcf0402c73")}
+2020/07/16 15:12:53 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:53 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:53 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:53 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:53 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:53 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:53 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:53 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:53 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:53 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:53 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:53 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:53 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:53 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100c05c85982bcf0402c82")}
+2020/07/16 15:12:53 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:53 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:54 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:54 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:54 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:54 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:54 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:54 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:54 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:54 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:54 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:54 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:54 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:54 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:54 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:54 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:54 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:54 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:54 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:54 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:54 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:54 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100c06c85982bcf0402c9b")}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100c07c85982bcf0402ca3")}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:55 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100c08c85982bcf0402cb8")}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100c08c85982bcf0402cc2")}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:56 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:57 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:57 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100c09c85982bcf0402cd4")}
+2020/07/16 15:12:57 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:57 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:57 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:57 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:57 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:57 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:57 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:57 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100c09c85982bcf0402cdd")}
+2020/07/16 15:12:57 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:57 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100c09c85982bcf0402ce0")}
+2020/07/16 15:12:57 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:57 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:57 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:57 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:57 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:57 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:57 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:57 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:57 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:58 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:58 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:58 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:58 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:58 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:58 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:58 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:58 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:58 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:58 [writer.go] ReplaceOne: &{1 1 0 <nil>}
+2020/07/16 15:12:58 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:12:58 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:12:58 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:12:58 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:12:58 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:12:58 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:12:58 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:12:58 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:12:58 [consumer.go] Too many requests. Wait for 1m0s 
+2020/07/16 15:12:58 [writer.go] ReplaceOne: &{0 0 1 ObjectID("5f100c0ac85982bcf0402cf5")}
+2020/07/16 15:12:59 [consumer.go] Too many requests. Wait for 1m0s 

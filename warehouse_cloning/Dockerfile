@@ -1,13 +1,13 @@
 FROM golang:1.14-alpine
 
-WORKDIR /go/src/ava.fund/alpha/Post-Covid/warehouse_cloning
+ENV WAREHOUSE_CLONING_HOME "$GOPATH/src/ava.fund/alpha/Post-Covid/warehouse_cloning"
 
-COPY ./ ./
-
-WORKDIR /go/src/ava.fund/alpha/Post-Covid/warehouse_cloning/src
+COPY ./ $WAREHOUSE_CLONING_HOME
+WORKDIR $WAREHOUSE_CLONING_HOME/src
 
 RUN go mod download
-
 RUN go build -o ../main ./cmd/main.go 
+RUN mkdir ../logs
+RUN crontab ../cron
 
-ENTRYPOINT ["../main" , "../config.yaml"]
+ENTRYPOINT ["crond" , "-f"]

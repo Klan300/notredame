@@ -71,8 +71,6 @@ func Producer(securities []Security) chan *Request {
                         tenyearago.Unix(),
                         currentTime.Unix(),
                         utils.Config.Source.Token)
-
-                    fmt.Printf(endpoint)
                     
                     httpreq, _ := http.NewRequest("GET", endpoint, nil)
 
