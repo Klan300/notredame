@@ -24,11 +24,11 @@ services:
 
         environment:
             ME_CONFIG_MONGODB_SERVER: warehouse_mongo
-            ME_CONFIG_BASICAUTH_USERNAME: renatogroffe
-            ME_CONFIG_BASICAUTH_PASSWORD: MongoExpress2019!
+            ME_CONFIG_BASICAUTH_USERNAME: admin
+            ME_CONFIG_BASICAUTH_PASSWORD: Admin123
             ME_CONFIG_MONGODB_ADMINUSERNAME: admin
             ME_CONFIG_MONGODB_ADMINPASSWORD: Admin123
-        
+         
         ports:
             - 8080:8081
             

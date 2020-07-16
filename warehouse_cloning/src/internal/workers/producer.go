@@ -1,10 +1,11 @@
 package workers
 
 import (
-    "fmt"
-    "net/http"
+	"fmt"
+	"net/http"
+	"time"
 
-    "ava.fund/alpha/Post-Covid/warehouse_cloning/src/internal/utils"
+	"ava.fund/alpha/Post-Covid/warehouse_cloning/src/internal/utils"
 )
 
 func Producer(securities []Security) chan *Request {
@@ -59,6 +60,29 @@ func Producer(securities []Security) chan *Request {
                         }
 
                     }
+                case "candle":
+                    currentTime := time.Now()
+                    tenyearago := currentTime.AddDate(-10, 0, 0)
+                    
+                    endpoint := fmt.Sprintf(
+                        utils.Endpoints[document],
+                        utils.Config.Source.Host, 
+                        security.Symbol, 
+                        tenyearago.Unix(),
+                        currentTime.Unix(),
+                        utils.Config.Source.Token)
+
+                    fmt.Printf(endpoint)
+                    
+                    httpreq, _ := http.NewRequest("GET", endpoint, nil)
+
+                    requests <- &Request{
+                        Document : document,
+                        Exchange : security.Exchange,
+                        Symbol   : security.Symbol,
+                        HttpReq  : httpreq,
+                    }
+
                 }
             }
         }

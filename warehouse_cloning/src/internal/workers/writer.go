@@ -54,6 +54,12 @@ func Writer(responses chan *Response) {
                             "frequency": response.Request.Frequency,
                             "statement": response.Request.Statement,
                             "data"     : data}
+
+                    case "candle":
+                        filter = bson.M{"symbol": response.Request.Symbol}
+                        replace = bson.M{
+                            "symbol": response.Request.Symbol,
+                            "data"  : data}
                 }
 
                 collectionName := fmt.Sprintf("%s_%s", response.Request.Exchange, response.Request.Document)
