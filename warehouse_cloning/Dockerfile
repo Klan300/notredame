@@ -7,7 +7,6 @@ WORKDIR $WAREHOUSE_CLONING_HOME/src
 
 RUN go mod download
 RUN go build -o ../main ./cmd/main.go 
-RUN mkdir ../logs
 RUN crontab ../cron
 
 ENTRYPOINT ["crond" , "-f"]

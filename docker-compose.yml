@@ -2,6 +2,7 @@ version: "3.1"
 services:
     warehouse_cloning:
         build: ./warehouse_cloning
+        image: warehouse_cloning:2.2
 
         depends_on:
         - warehouse_mongo
@@ -9,6 +10,7 @@ services:
     
     warehouse_mongo:
         build: ./warehouse_mongo
+        image: warehouse_mongo:1.0
         
         environment:
             MONGO_INITDB_ROOT_USERNAME: admin
@@ -18,7 +20,7 @@ services:
             - "27017:27017"
 
     mongo-express:
-        image: mongo-express
+        image: mongo-express:latest
 
         restart: always
 
