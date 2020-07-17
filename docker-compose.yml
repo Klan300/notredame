@@ -43,7 +43,7 @@ services:
             ME_CONFIG_MONGODB_ADMINPASSWORD: Admin123
          
         ports:
-            - 8080:8081
+            - 8081:8081
             
         depends_on:
             - warehouse_mongo
