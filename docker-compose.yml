@@ -13,7 +13,7 @@ services:
 
     warehouse_cloning:
         build: ./warehouse_cloning
-        image: warehouse_cloning:2.2
+        image: warehouse_cloning:2.3
 
         depends_on:
             - warehouse_mongo
