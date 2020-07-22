@@ -41,9 +41,9 @@ func process(request *http.Request, exchange string) []Security {
 func RetrieveSecurities() []Security {
 
     utils.Debug("[reader.go] Begin")
-    client, database, ctx := utils.Database()
+    database, ctx := utils.Database()
     defer utils.Debug("[reader.go] Disconnect from database server")
-    defer client.Disconnect(ctx)
+    defer database.Client().Disconnect(ctx)
     
     
 

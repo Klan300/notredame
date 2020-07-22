@@ -1,7 +1,16 @@
 version: "3.1"
 services:
 
+    warehouse_cloning:
+        container_name: warehouse_cloning
+        build: ./warehouse_cloning
+        image: warehouse_cloning:2.3
+
+        depends_on:
+            - warehouse_mongo
+
     warehouse_api:
+        container_name: warehouse_api
         build: ./warehouse_api
         image: warehouse_api:2.1
 
@@ -9,38 +18,35 @@ services:
             - warehouse_mongo
 
         ports: 
-            - "1323:1323"
-
-    warehouse_cloning:
-        build: ./warehouse_cloning
-        image: warehouse_cloning:2.3
-
-        depends_on:
-            - warehouse_mongo
+            - "1323:1323"            
 
     
     warehouse_mongo:
-        build: ./warehouse_mongo
-        image: warehouse_mongo:1.0
+        container_name: warehouse_mongo
+        image: mongo:4.2.7
         
         environment:
             MONGO_INITDB_ROOT_USERNAME: admin
-            MONGO_INITDB_ROOT_PASSWORD: Admin123
+            MONGO_INITDB_ROOT_PASSWORD: admin
 
         ports:
             - "27017:27017"
 
+        volumes:
+            - /data/db:/data/db
+
+
     mongo-express:
-        image: mongo-express:latest
+        image: mongo-express:0.54.0
 
         restart: always
 
         environment:
             ME_CONFIG_MONGODB_SERVER: warehouse_mongo
             ME_CONFIG_BASICAUTH_USERNAME: admin
-            ME_CONFIG_BASICAUTH_PASSWORD: Admin123
+            ME_CONFIG_BASICAUTH_PASSWORD: admin
             ME_CONFIG_MONGODB_ADMINUSERNAME: admin
-            ME_CONFIG_MONGODB_ADMINPASSWORD: Admin123
+            ME_CONFIG_MONGODB_ADMINPASSWORD: admin
          
         ports:
             - 8081:8081

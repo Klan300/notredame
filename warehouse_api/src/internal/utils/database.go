@@ -8,16 +8,20 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-func Database() (*mongo.Client, *mongo.Database, context.Context){
+func Database() (*mongo.Database, context.Context){
    
 	Debug("[database.go] Begin")
 
     Debug("[database.go] Create a database client")
-	client, err := mongo.NewClient(options.Client().ApplyURI(Config.Source.Host).SetAuth(
-		options.Credential{
-			Username: Config.Source.Username, 
-			Password: Config.Source.Password,
-		}))
+	client, err := mongo.NewClient(options.
+		Client().
+		ApplyURI(Config.Source.Host))
+		// SetAuth(
+		// options.Credential{
+		// 	Username: Config.Source.Username, 
+		// 	Password: Config.Source.Password,
+		// }))
+
 	
     if err != nil {
         Error("[database.go] %v", err)
@@ -33,5 +37,5 @@ func Database() (*mongo.Client, *mongo.Database, context.Context){
 
 	database := client.Database(Config.Source.Database)
 	
-    return client, database, ctx
+    return database, ctx
 }

@@ -14,11 +14,11 @@ import (
 func Writer(responses chan *Response) {
     utils.Debug("[writer.go] Begin")
 
-    client, database, ctx := utils.Database()
+    database, ctx := utils.Database()
 
     go func() {
         defer utils.Debug("[writer.go] Disconnect from database server")
-        defer client.Disconnect(ctx)
+        defer database.Client().Disconnect(ctx)
         
         for {
             select {

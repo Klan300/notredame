@@ -8,7 +8,7 @@ import (
     "go.mongodb.org/mongo-driver/mongo/options"
 )
 
-func Database() (*mongo.Client, *mongo.Database, context.Context){
+func Database() ( *mongo.Database, context.Context){
     Debug("[database.go] Begin")
 
     Debug("[database.go] Create a database client")
@@ -29,5 +29,5 @@ func Database() (*mongo.Client, *mongo.Database, context.Context){
     }
 
     database := client.Database(Config.Target.Database)
-    return client, database, ctx
+    return database, ctx
 }

@@ -1,0 +1,43 @@
+2020-07-21T16:26:35+07:00: method=POST, uri=/token?username=dome, status=200
+2020-07-21T17:36:38+07:00: method=GET, uri=/api/symbol, status=404
+2020-07-21T23:41:51+07:00: method=POST, uri=/token?username=dome, status=200
+2020-07-21T23:41:59+07:00: method=GET, uri=/api/symbol, status=404
+2020/07/21 23:42:16 [api.go] find in US_profile
+2020/07/21 23:42:16 [database.go] Begin
+2020/07/21 23:42:16 [database.go] Create a database client
+2020/07/21 23:42:16 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-21T23:42:16+07:00: method=GET, uri=/api/profile?symbol=AAPL&exchange=US, status=404
+2020/07/21 23:44:13 [api.go] find in US_profile
+2020/07/21 23:44:13 [database.go] Begin
+2020/07/21 23:44:13 [database.go] Create a database client
+2020/07/21 23:44:13 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-21T23:44:13+07:00: method=GET, uri=/api/profile?symbol=AAPL&exchange=US, status=404
+2020/07/21 23:44:15 [api.go] find in US_profile
+2020/07/21 23:44:15 [database.go] Begin
+2020/07/21 23:44:15 [database.go] Create a database client
+2020/07/21 23:44:15 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-21T23:44:15+07:00: method=GET, uri=/api/profile?symbol=AAPL&exchange=US, status=404
+2020/07/21 23:45:18 [api.go] find in US_profile
+2020/07/21 23:45:18 [database.go] Begin
+2020/07/21 23:45:18 [database.go] Create a database client
+2020/07/21 23:45:18 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-21T23:45:18+07:00: method=GET, uri=/api/profile?symbol=AAPL&exchange=US, status=200
+2020/07/21 23:45:26 [database.go] Begin
+2020/07/21 23:45:26 [database.go] Create a database client
+2020/07/21 23:45:26 [database.go] Create a connection to mongodb://localhost:27017
+2020/07/21 23:45:27 (Location28818) path option to $unwind stage should be prefixed with a '$': BK_securities
+2020/07/21 23:46:10 [database.go] Begin
+2020/07/21 23:46:10 [database.go] Create a database client
+2020/07/21 23:46:10 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-21T23:46:11+07:00: method=GET, uri=/api/symbol, status=200
+2020/07/21 23:49:02 [database.go] Begin
+2020/07/21 23:49:02 [database.go] Create a database client
+2020/07/21 23:49:02 [database.go] Create a connection to mongodb://localhost:27017
+2020/07/21 23:50:19 [database.go] Begin
+2020/07/21 23:50:19 [database.go] Create a database client
+2020/07/21 23:50:19 [database.go] Create a connection to mongodb://localhost:27017
+2020/07/21 23:50:19 (FailedToParse) must specify 'as' field for a $lookup
+2020/07/21 23:52:48 [database.go] Begin
+2020/07/21 23:52:48 [database.go] Create a database client
+2020/07/21 23:52:48 [database.go] Create a connection to mongodb://localhost:27017
+2020/07/21 23:52:48 (FailedToParse) $lookup requires either 'pipeline' or both 'localField' and 'foreignField' to be specified
