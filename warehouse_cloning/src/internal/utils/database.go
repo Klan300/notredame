@@ -12,9 +12,13 @@ func Database() ( *mongo.Database, context.Context){
     Debug("[database.go] Begin")
 
     Debug("[database.go] Create a database client")
-    client, err := mongo.NewClient(options.Client().ApplyURI(Config.Target.Host).SetAuth(
+    client, err := mongo.NewClient(options.
+        Client().
+        ApplyURI(Config.Target.Host).
+        SetAuth(
         options.Credential{
-            Username: Config.Target.Username, Password: Config.Target.Password,
+            Username: Config.Target.Username, 
+            Password: Config.Target.Password,
         }))
     if err != nil {
         Error("[database.go] %v", err)
