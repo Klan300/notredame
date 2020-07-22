@@ -1,13 +1,13 @@
 package utils
 
 import (
-	"fmt"
-	"io"
-	"log"
-	"os"
-	"path/filepath"
-	"strings"
-	"time"
+    "fmt"
+    "io"
+    "log"
+    "os"
+    "path/filepath"
+    "strings"
+    "time"
 )
 
 func Debug(message string, arguments ...interface{}){
@@ -37,13 +37,11 @@ func LoadLoggingConfig() {
     if Config.Logging.Dirname != "" {
 
         rootDirname, err := filepath.Abs(filepath.Dir(os.Args[0]))
-
         if err != nil {
-            log.Panicf("[log.go] %s\n", err)
+            log.Panicf("[logging.go] %v\n", err)
         }
 
         logDirname     := filepath.Join(rootDirname, Config.Logging.Dirname)
-
         var dirPermissions os.FileMode = 0755
         os.MkdirAll(logDirname, dirPermissions)
 
@@ -55,7 +53,7 @@ func LoadLoggingConfig() {
         file, err := os.OpenFile(filePath, fileOperations, filePermissions)
 
         if err != nil {
-           log.Panicf("[log.go] %s\n", err)
+           log.Panicf("[logging.go] %v\n", err)
         }
 
         outputs = append(outputs, file)

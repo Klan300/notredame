@@ -1,74 +1,82 @@
 package handlers
 
 import (
-	"net/http"
-	"strconv"
-	"strings"
+    "net/http"
+    "strconv"
+    "strings"
 
-	"github.com/labstack/echo/v4"
-	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/mongo/options"
+    "github.com/labstack/echo/v4"
+    "go.mongodb.org/mongo-driver/bson"
+    "go.mongodb.org/mongo-driver/mongo/options"
 
-	"ava.fund/alpha/Post-Covid/warehouse_api/src/internal/utils"
+    "ava.fund/alpha/Post-Covid/warehouse_api/src/internal/utils"
 )
 
 
-func Search( c echo.Context) error {
+func Search(c echo.Context) error {
 
-    database, ctx := utils.Database()
-    text := c.QueryParam("text")
-    symbol := c.QueryParam("symbol")
-    limit := c.QueryParam("limit")
-    // exchange := c.QueryParam("exchange")
+    symbol := strings.ToLower(c.QueryParam("symbol"))
+    text   := strings.ToLower(c.QueryParam("text"))
+    limit  := c.QueryParam("limit")
+    
+    collectionName := "securities"
+    database, ctx  := utils.Database()
+    defer database.Client().Disconnect(ctx)
+
+    utils.Debug("[api.go] Search symbols in %s", collectionName)
+    
     var filter bson.M
-
     switch {
-        case symbol != "" && text != "":
-            filter = bson.M{"$and": 
-            []interface{}{
-                bson.M{"description" : bson.M{"$regex" :text}},
-                bson.M{"symbol" : bson.M{"$regex" :strings.ToLower(symbol)}},
-            },
-        }
-        case symbol != "" && text == "":
-            filter = bson.M{"symbol" : bson.M{"$regex" :strings.ToLower(symbol)}}
-        case symbol == "" && text != "":
-            filter = bson.M{"$or": 
-                []interface{}{
-                    bson.M{"description" : bson.M{"$regex" :text}},
-                    bson.M{"symbol" : bson.M{"$regex" :text}},
-                },
-            }
+
         case symbol == "" && text == "":
+            utils.Debug("[search.go] Empty {symbol} and {text}")
+            return c.NoContent(http.StatusBadRequest)
+
+        case symbol != "" && text == "":
+            filter = bson.M{"symbol": bson.M{"$regex": symbol}}
+
+        case symbol == "" && text != "":
+            filter = bson.M{"$or": []interface{}{
+                bson.M{"symbol"     : bson.M{"$regex": text}},
+                bson.M{"description": bson.M{"$regex": text}},
+            }}
+
+        case symbol != "" && text != "":
+            filter = bson.M{"$and": []interface{}{
+                bson.M{"symbol"     : bson.M{"$regex": symbol}},
+                bson.M{"description": bson.M{"$regex": text}},
+                
+            }}
+
+        }
+
+
+    sorter := options.Find()
+    sorter.SetSort(bson.M{ "symbol": 1})
+    if limit != "" {
+        if limit, err := strconv.ParseInt(limit, 10, 64); err != nil {
+            utils.Debug("[search.go] %v", err)
             return c.NoContent(http.StatusBadRequest)
         }
-
-    findOptions := options.Find()
-    findOptions.SetSort(bson.M{ "symbol": 1})
-    
-    if limit != ""{
-        limitInt,err := strconv.ParseInt(limit, 10, 64)
-
-        if err != nil {
-            utils.Error("[api.go] Get Symbol",err)
-        }
-        
-        findOptions.SetLimit(limitInt)
+        sorter.SetLimit(limit)
     }
 
-    securities,err := database.Collection("securities").Find( ctx, filter, findOptions)
 
+    cursor, err := database.
+        Collection(collectionName).
+        Find(ctx, filter, sorter)
     if err != nil {
-        utils.Error("[api.go] Get Symbol",err)
+        utils.Debug("[search.go] %v", err)
+        return c.NoContent(http.StatusNotFound)
     }
 
-    data := []bson.M{}
 
-    err = securities.All(ctx,&data)
-
+    var data []bson.M
+    cursor.All(ctx, &data)
     if err != nil {
-        utils.Error("[api.go] Get Symbol",err)
+        utils.Error("[search.go] %v", err)
+        return c.NoContent(http.StatusNotFound)
     }
 
-	return c.JSON(http.StatusOK, data)
+    return c.JSON(http.StatusOK, data)
 }

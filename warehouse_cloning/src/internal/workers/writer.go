@@ -1,15 +1,14 @@
 package workers
 
 import (
-	"encoding/json"
-	"fmt"
-	"strings"
+    "encoding/json"
+    "fmt"
+    "strings"
 
-	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/mongo/options"
+    "go.mongodb.org/mongo-driver/bson"
+    "go.mongodb.org/mongo-driver/mongo/options"
 
-	// "ava.fund/alpha/Post-Covid/warehouse_api/model"
-	"ava.fund/alpha/Post-Covid/warehouse_cloning/src/internal/utils"
+    "ava.fund/alpha/Post-Covid/warehouse_cloning/src/internal/utils"
 )
 
 func Writer(responses chan *Response) {
@@ -40,7 +39,8 @@ func Writer(responses chan *Response) {
                         filter = bson.M{"symbol": strings.ToLower(response.Request.Symbol)}
                         replace = bson.M{
                             "symbol": strings.ToLower(response.Request.Symbol),
-                            "data"  : data}
+                            "data"  : data
+                        }
 
                     case "financials":
                         filter = bson.M{
@@ -48,19 +48,22 @@ func Writer(responses chan *Response) {
                                 bson.M{"symbol"   : strings.ToLower(response.Request.Symbol)},
                                 bson.M{"statement": response.Request.Statement},
                                 bson.M{"frequency": response.Request.Frequency},
-                            }}
+                            }
+                        }
 
                         replace = bson.M{
                             "symbol"   : strings.ToLower(response.Request.Symbol),
                             "frequency": response.Request.Frequency,
                             "statement": response.Request.Statement,
-                            "data"     : data}
+                            "data"     : data
+                        }
 
                     case "candle":
                         filter = bson.M{"symbol": strings.ToLower(response.Request.Symbol)}
                         replace = bson.M{
                             "symbol": strings.ToLower(response.Request.Symbol),
-                            "data"  : data}
+                            "data"  : data
+                        }
                 }
 
                 collectionName := fmt.Sprintf("%s_%s", strings.ToLower(response.Request.Exchange), response.Request.Document)

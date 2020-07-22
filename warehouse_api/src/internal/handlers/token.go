@@ -1,36 +1,36 @@
 package handlers
 
 import (
-	"net/http"
-	"time"
-	"log"
+    "net/http"
+    "time"
+    "log"
 
-	"github.com/dgrijalva/jwt-go"
-	"github.com/labstack/echo/v4"
+    "github.com/dgrijalva/jwt-go"
+    "github.com/labstack/echo/v4"
 
-	"ava.fund/alpha/Post-Covid/warehouse_api/src/internal/utils"
+    "ava.fund/alpha/Post-Covid/warehouse_api/src/internal/utils"
 )
 
 func Token(c echo.Context) error {
 
     username := c.QueryParam("username")
     if !utils.Config.Authen.Exists(username) {
+        utils.Debug("[token.go] Token requested for an unauthorized user %s", username)
         return c.NoContent(http.StatusUnauthorized)
     }
 
-    t, _ := time.Parse("2006-01-02",utils.Config.Authen.Expire)    
+    expire, _ := time.Parse("2006-01-02", utils.Config.Authen.Expire)
 
-    claims             := jwt.MapClaims{}
+    claims            := jwt.MapClaims{}
     claims["username"] = username
-    claims["exp"]      = t.Unix()
-    time.Now().Day()
+    claims["exp"]      = expire.Unix()
 
     token, err := jwt.
         NewWithClaims(jwt.SigningMethodHS256, claims).
         SignedString([]byte(utils.Config.Authen.Secret))
 
     if err != nil {
-        log.Panicf("[token.go] %s\n", err)
+        utils.Error("[token.go] %v", err)
     }
 
     return c.JSON(http.StatusOK, echo.Map{
