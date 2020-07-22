@@ -47,13 +47,13 @@ func Search( c echo.Context) error {
     findOptions.SetSort(bson.M{ "symbol": 1})
     
     if limit != ""{
-        limitInt,err := strconv.ParseInt(limit, 10, 64)
+        limit,err := strconv.ParseInt(limit, 10, 64)
 
         if err != nil {
             utils.Error("[api.go] Get Symbol",err)
         }
         
-        findOptions.SetLimit(limitInt)
+        findOptions.SetLimit(limit)
     }
 
     securities,err := database.Collection("securities").Find( ctx, filter, findOptions)

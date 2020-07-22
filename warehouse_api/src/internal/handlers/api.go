@@ -62,7 +62,7 @@ func Financials( c echo.Context) error {
     data := bson.M{}
 
     exchange := c.QueryParam("exchange")
-    collectionName := fmt.Sprintf("%s_profile",strings.ToLower(exchange))
+    collectionName := fmt.Sprintf("%s_financials",strings.ToLower(exchange))
     utils.Debug("[api.go] find in %s",collectionName)
     
     database, ctx := utils.Database()
