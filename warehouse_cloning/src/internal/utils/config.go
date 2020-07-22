@@ -34,7 +34,7 @@ type ConfigDefinition struct {
 }
 
 
-var Config *ConfigDefinition
+var Config *ConfigDefinition = new(ConfigDefinition)
 func LoadConfig(filePath string){
 
     viper.AutomaticEnv()

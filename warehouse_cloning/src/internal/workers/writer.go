@@ -3,6 +3,7 @@ package workers
 import (
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -36,33 +37,33 @@ func Writer(responses chan *Response) {
 
                 switch response.Request.Document {
                     case "profile":
-                        filter = bson.M{"symbol": response.Request.Symbol}
+                        filter = bson.M{"symbol": strings.ToLower(response.Request.Symbol)}
                         replace = bson.M{
-                            "symbol": response.Request.Symbol,
+                            "symbol": strings.ToLower(response.Request.Symbol),
                             "data"  : data}
 
                     case "financials":
                         filter = bson.M{
                             "$and": []bson.M{
-                                bson.M{"symbol"   : response.Request.Symbol},
+                                bson.M{"symbol"   : strings.ToLower(response.Request.Symbol)},
                                 bson.M{"statement": response.Request.Statement},
                                 bson.M{"frequency": response.Request.Frequency},
                             }}
 
                         replace = bson.M{
-                            "symbol"   : response.Request.Symbol,
+                            "symbol"   : strings.ToLower(response.Request.Symbol),
                             "frequency": response.Request.Frequency,
                             "statement": response.Request.Statement,
                             "data"     : data}
 
                     case "candle":
-                        filter = bson.M{"symbol": response.Request.Symbol}
+                        filter = bson.M{"symbol": strings.ToLower(response.Request.Symbol)}
                         replace = bson.M{
-                            "symbol": response.Request.Symbol,
+                            "symbol": strings.ToLower(response.Request.Symbol),
                             "data"  : data}
                 }
 
-                collectionName := fmt.Sprintf("%s_%s", response.Request.Exchange, response.Request.Document)
+                collectionName := fmt.Sprintf("%s_%s", strings.ToLower(response.Request.Exchange), response.Request.Document)
                 collectionInstance := database.Collection(collectionName)
 
                 options := options.Replace().SetUpsert(true)
