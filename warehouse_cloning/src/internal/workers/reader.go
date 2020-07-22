@@ -1,15 +1,16 @@
 package workers
 
 import (
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"net/http"
+	"strings"
 
-    "ava.fund/alpha/Post-Covid/warehouse_cloning/src/internal/utils"
+	"ava.fund/alpha/Post-Covid/warehouse_cloning/src/internal/utils"
 
-    "go.mongodb.org/mongo-driver/bson"
-    "go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 
@@ -30,7 +31,8 @@ func process(request *http.Request, exchange string) []Security {
     }
 
     for i := range securities {
-        securities[i].Exchange = exchange
+        securities[i].Exchange = strings.ToLower(exchange)
+        securities[i].Symbol = strings.ToLower(securities[i].Symbol)
     }
 
     return securities
@@ -46,7 +48,7 @@ func RetrieveSecurities() []Security {
     defer database.Client().Disconnect(ctx)
     
     
-
+    var operations []mongo.WriteModel
     var securities []Security
     for _, exchange := range utils.Config.Exchanges {
 
@@ -65,7 +67,7 @@ func RetrieveSecurities() []Security {
         securitiesForExchange := process(request, exchange)
         securities = append(securities, securitiesForExchange...)
 
-        var operations []mongo.WriteModel
+        var operationsForExchange []mongo.WriteModel
         for _, security := range securitiesForExchange {
             
             filter := bson.M{"symbol": security.Symbol}
@@ -75,14 +77,16 @@ func RetrieveSecurities() []Security {
             operation.SetReplacement(security)
             operation.SetUpsert(true)
 
-            operations = append(operations,operation)
+            operationsForExchange = append(operationsForExchange, operation)
 
         }
         
-        collectionName := fmt.Sprintf("%s_securities", exchange)
+        collectionName := fmt.Sprintf("%s_securities", strings.ToLower(exchange))
         collectionInstance := database.Collection(collectionName)
 
-        result, err := collectionInstance.BulkWrite(ctx, operations)        
+        operations = append(operations, operationsForExchange...)
+
+        result, err := collectionInstance.BulkWrite(ctx, operationsForExchange)        
         if err != nil {
             utils.Error("[reader.go] %v", err)
         } else {
@@ -90,7 +94,16 @@ func RetrieveSecurities() []Security {
         }
 
     }
+    collectionAllSecurity := database.Collection("securities")
+
+    result, err := collectionAllSecurity.BulkWrite(ctx, operations)        
+        if err != nil {
+            utils.Error("[reader.go] %v", err)
+        } else {
+            utils.Debug("[reader.go] BulkWrite: %v", result)
+        }
 
     utils.Debug("[reader.go] End")
+
     return securities
 }
