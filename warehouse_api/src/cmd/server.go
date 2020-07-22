@@ -25,9 +25,9 @@ func main() {
 	e.Use(middleware.Recover())
     e.Use(middleware.CORS())
     e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
-        Format : "${time_rfc3339}: method=${method}, uri=${uri}, status=${status}\n",
+        Format : "${time_rfc3339}: method=${method}, remote=${remote_ip}, domain=${host}, uri=${uri}, status=${status}\n",
         Skipper: middleware.DefaultSkipper,
-        Output : utils.Config.Logging.LoggingOutput,
+        Output : utils.Config.Logging.Outputs(),
 	}))
 	
 	e.POST("/token", handlers.Token)
@@ -39,6 +39,7 @@ func main() {
 	api.GET("/profile", handlers.Profile)
 	api.GET("/candle", handlers.Candle)
 	api.GET("/financials/:statement/:frequency", handlers.Financials) 
+	api.GET("/symbols",handlers.Symbol)
 	api.GET("/search", handlers.Search)
 
 	e.Logger.Fatal(e.Start(utils.Config.Target.Host))

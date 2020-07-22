@@ -21,16 +21,25 @@ type ConfigDefinition struct {
 
 	Authen AuthenDefinition
 
-	Logging struct {
-		Level         string
-		Stdout        bool
-		Dirname       string
-		LoggingOutput io.Writer
-	}
+	Logging LoggingDefinition
 }
 
-var Config ConfigDefinition
+type AuthenDefinition struct {
+	Usernames []string
+	Secret    string
+	Expire    string
+}
+
+type LoggingDefinition struct {
+	Level         string
+		Stdout        bool
+		Dirname       string
+}
+
+var Config *ConfigDefinition = new(ConfigDefinition)
+
 func LoadConfig(filePath string) {
+
 
 	viper.AutomaticEnv()
 	viper.SetConfigFile(filePath)
@@ -44,11 +53,6 @@ func LoadConfig(filePath string) {
 	LoadLoggingConfig()
 }
 
-type AuthenDefinition struct {
-	Usernames []string
-	Secret    string
-}
-
 func (authen *AuthenDefinition) Exists(lookup string) bool {
 
 	for _, username := range authen.Usernames {
@@ -59,3 +63,6 @@ func (authen *AuthenDefinition) Exists(lookup string) bool {
 	return false
 }
 
+func (logging *LoggingDefinition) Outputs() io.Writer {
+	return log.Writer()
+}
