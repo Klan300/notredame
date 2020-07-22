@@ -18,10 +18,11 @@ func Token(c echo.Context) error {
         return c.NoContent(http.StatusUnauthorized)
     }
 
+    t, _ := time.Parse("2006-01-02",utils.Config.Authen.Expire)    
 
     claims             := jwt.MapClaims{}
     claims["username"] = username
-    claims["exp"]      = time.Date(2030,01,1,0,0,0,0,time.Local).Unix()
+    claims["exp"]      = t.Unix()
     time.Now().Day()
 
     token, err := jwt.

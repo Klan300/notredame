@@ -65,8 +65,6 @@ func LoadLoggingConfig() {
         outputs = append(outputs, file)
     }
 
-    Config.Logging.LoggingOutput = io.MultiWriter(outputs...)
-
 	log.SetOutput(io.MultiWriter(outputs...))
 
 }

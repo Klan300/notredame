@@ -127,3 +127,243 @@
 2020/07/22 13:38:19 [database.go] Create a database client
 2020/07/22 13:38:19 [database.go] Create a connection to mongodb://localhost:27017
 2020-07-22T13:38:20+07:00: method=GET, uri=/api/search?search=A, status=200
+2020/07/22 13:58:36 [database.go] Begin
+2020/07/22 13:58:36 [database.go] Create a database client
+2020/07/22 13:58:36 [database.go] Create a connection to mongodb://localhost:27017
+2020/07/22 13:58:36 cannot decode document into []primitive.M
+2020/07/22 13:59:08 [database.go] Begin
+2020/07/22 13:59:08 [database.go] Create a database client
+2020/07/22 13:59:08 [database.go] Create a connection to mongodb://localhost:27017
+2020/07/22 13:59:08 cannot decode document into []primitive.D
+2020/07/22 14:02:24 [database.go] Begin
+2020/07/22 14:02:24 [database.go] Create a database client
+2020/07/22 14:02:24 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:02:24+07:00: method=GET, uri=/api/search?search=A, status=200
+2020/07/22 14:03:00 [database.go] Begin
+2020/07/22 14:03:00 [database.go] Create a database client
+2020/07/22 14:03:00 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:03:00+07:00: method=GET, uri=/api/search?search=A, status=200
+2020/07/22 14:03:38 [database.go] Begin
+2020/07/22 14:03:38 [database.go] Create a database client
+2020/07/22 14:03:38 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:03:38+07:00: method=GET, uri=/api/search?search=A, status=200
+2020/07/22 14:03:38 [database.go] Begin
+2020/07/22 14:03:38 [database.go] Create a database client
+2020/07/22 14:03:38 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:03:38+07:00: method=GET, uri=/api/search?search=A, status=200
+2020/07/22 14:03:40 [database.go] Begin
+2020/07/22 14:03:40 [database.go] Create a database client
+2020/07/22 14:03:40 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:03:40+07:00: method=GET, uri=/api/search?search=A, status=200
+2020/07/22 14:04:03 [database.go] Begin
+2020/07/22 14:04:03 [database.go] Create a database client
+2020/07/22 14:04:03 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:04:03+07:00: method=GET, uri=/api/search?search=A, status=200
+2020/07/22 14:04:06 [database.go] Begin
+2020/07/22 14:04:06 [database.go] Create a database client
+2020/07/22 14:04:06 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:04:07+07:00: method=GET, uri=/api/search?search=, status=200
+2020/07/22 14:04:18 [database.go] Begin
+2020/07/22 14:04:18 [database.go] Create a database client
+2020/07/22 14:04:18 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:04:18+07:00: method=GET, uri=/api/search?search=AAPL, status=200
+2020/07/22 14:04:20 [database.go] Begin
+2020/07/22 14:04:20 [database.go] Create a database client
+2020/07/22 14:04:20 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:04:20+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:04:39 [database.go] Begin
+2020/07/22 14:04:39 [database.go] Create a database client
+2020/07/22 14:04:39 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:04:39+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:04:45 [database.go] Begin
+2020/07/22 14:04:45 [database.go] Create a database client
+2020/07/22 14:04:45 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:04:46+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:04:49 [database.go] Begin
+2020/07/22 14:04:49 [database.go] Create a database client
+2020/07/22 14:04:49 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:04:49+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:04:50 [database.go] Begin
+2020/07/22 14:04:50 [database.go] Create a database client
+2020/07/22 14:04:50 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:04:50+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:04:51 [database.go] Begin
+2020/07/22 14:04:51 [database.go] Create a database client
+2020/07/22 14:04:51 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:04:51+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:04:51 [database.go] Begin
+2020/07/22 14:04:51 [database.go] Create a database client
+2020/07/22 14:04:51 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:04:51+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:04:52 [database.go] Begin
+2020/07/22 14:04:52 [database.go] Create a database client
+2020/07/22 14:04:52 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:04:52+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:04:53 [database.go] Begin
+2020/07/22 14:04:53 [database.go] Create a database client
+2020/07/22 14:04:53 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:04:53+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:04:53 [database.go] Begin
+2020/07/22 14:04:53 [database.go] Create a database client
+2020/07/22 14:04:53 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:04:54+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:04:54 [database.go] Begin
+2020/07/22 14:04:54 [database.go] Create a database client
+2020/07/22 14:04:54 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:04:54+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:04:55 [database.go] Begin
+2020/07/22 14:04:55 [database.go] Create a database client
+2020/07/22 14:04:55 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:04:55+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:04:56 [database.go] Begin
+2020/07/22 14:04:56 [database.go] Create a database client
+2020/07/22 14:04:56 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:04:56+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:04:56 [database.go] Begin
+2020/07/22 14:04:56 [database.go] Create a database client
+2020/07/22 14:04:56 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:04:56+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:04:57 [database.go] Begin
+2020/07/22 14:04:57 [database.go] Create a database client
+2020/07/22 14:04:57 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:04:57+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:04:58 [database.go] Begin
+2020/07/22 14:04:58 [database.go] Create a database client
+2020/07/22 14:04:58 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:04:58+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:04:59 [database.go] Begin
+2020/07/22 14:04:59 [database.go] Create a database client
+2020/07/22 14:04:59 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:04:59+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:04:59 [database.go] Begin
+2020/07/22 14:04:59 [database.go] Create a database client
+2020/07/22 14:04:59 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:04:59+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:05:00 [database.go] Begin
+2020/07/22 14:05:00 [database.go] Create a database client
+2020/07/22 14:05:00 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:05:00+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:05:00 [database.go] Begin
+2020/07/22 14:05:00 [database.go] Create a database client
+2020/07/22 14:05:00 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:05:01+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:05:01 [database.go] Begin
+2020/07/22 14:05:01 [database.go] Create a database client
+2020/07/22 14:05:01 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:05:01+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:05:02 [database.go] Begin
+2020/07/22 14:05:02 [database.go] Create a database client
+2020/07/22 14:05:02 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:05:02+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:05:03 [database.go] Begin
+2020/07/22 14:05:03 [database.go] Create a database client
+2020/07/22 14:05:03 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:05:03+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:05:03 [database.go] Begin
+2020/07/22 14:05:03 [database.go] Create a database client
+2020/07/22 14:05:03 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:05:04+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:05:04 [database.go] Begin
+2020/07/22 14:05:04 [database.go] Create a database client
+2020/07/22 14:05:04 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:05:04+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:05:05 [database.go] Begin
+2020/07/22 14:05:05 [database.go] Create a database client
+2020/07/22 14:05:05 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:05:05+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:05:06 [database.go] Begin
+2020/07/22 14:05:06 [database.go] Create a database client
+2020/07/22 14:05:06 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:05:06+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:05:07 [database.go] Begin
+2020/07/22 14:05:07 [database.go] Create a database client
+2020/07/22 14:05:07 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:05:07+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:05:08 [database.go] Begin
+2020/07/22 14:05:08 [database.go] Create a database client
+2020/07/22 14:05:08 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:05:08+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:05:09 [database.go] Begin
+2020/07/22 14:05:09 [database.go] Create a database client
+2020/07/22 14:05:09 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:05:09+07:00: method=GET, uri=/api/search?search=AA, status=200
+2020/07/22 14:05:12 [database.go] Begin
+2020/07/22 14:05:12 [database.go] Create a database client
+2020/07/22 14:05:12 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:05:13+07:00: method=GET, uri=/api/search?search=, status=200
+2020/07/22 14:05:42 [database.go] Begin
+2020/07/22 14:05:42 [database.go] Create a database client
+2020/07/22 14:05:42 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:05:43+07:00: method=GET, uri=/api/search?search=, status=200
+2020/07/22 14:05:45 [database.go] Begin
+2020/07/22 14:05:45 [database.go] Create a database client
+2020/07/22 14:05:45 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:05:46+07:00: method=GET, uri=/api/search?search=, status=200
+2020/07/22 14:05:48 [database.go] Begin
+2020/07/22 14:05:48 [database.go] Create a database client
+2020/07/22 14:05:48 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:05:48+07:00: method=GET, uri=/api/search?search=, status=200
+2020/07/22 14:05:50 [database.go] Begin
+2020/07/22 14:05:50 [database.go] Create a database client
+2020/07/22 14:05:50 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:05:51+07:00: method=GET, uri=/api/search?search=, status=200
+2020/07/22 14:05:52 [database.go] Begin
+2020/07/22 14:05:52 [database.go] Create a database client
+2020/07/22 14:05:52 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:05:52+07:00: method=GET, uri=/api/search?search=, status=200
+2020/07/22 14:06:14 [database.go] Begin
+2020/07/22 14:06:14 [database.go] Create a database client
+2020/07/22 14:06:14 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:06:15+07:00: method=GET, uri=/api/search?search=A, status=200
+2020/07/22 14:06:19 [database.go] Begin
+2020/07/22 14:06:19 [database.go] Create a database client
+2020/07/22 14:06:19 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:06:20+07:00: method=GET, uri=/api/search?search=A, status=200
+2020/07/22 14:06:22 [database.go] Begin
+2020/07/22 14:06:22 [database.go] Create a database client
+2020/07/22 14:06:22 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:06:22+07:00: method=GET, uri=/api/search?search=A, status=200
+2020/07/22 14:07:24 [database.go] Begin
+2020/07/22 14:07:24 [database.go] Create a database client
+2020/07/22 14:07:24 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:07:24+07:00: method=GET, uri=/api/search?search=A, status=200
+2020/07/22 14:07:26 [database.go] Begin
+2020/07/22 14:07:26 [database.go] Create a database client
+2020/07/22 14:07:26 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:07:26+07:00: method=GET, uri=/api/search?search=A, status=200
+2020/07/22 14:07:29 [database.go] Begin
+2020/07/22 14:07:29 [database.go] Create a database client
+2020/07/22 14:07:29 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:07:29+07:00: method=GET, uri=/api/search?search=, status=200
+2020/07/22 14:07:33 [database.go] Begin
+2020/07/22 14:07:33 [database.go] Create a database client
+2020/07/22 14:07:33 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:07:33+07:00: method=GET, uri=/api/search?search=, status=200
+2020/07/22 14:07:35 [database.go] Begin
+2020/07/22 14:07:35 [database.go] Create a database client
+2020/07/22 14:07:35 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:07:36+07:00: method=GET, uri=/api/search?search=, status=200
+2020/07/22 14:07:41 [database.go] Begin
+2020/07/22 14:07:41 [database.go] Create a database client
+2020/07/22 14:07:41 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:07:42+07:00: method=GET, uri=/api/search?search=, status=200
+2020/07/22 14:58:52 [database.go] Begin
+2020/07/22 14:58:52 [database.go] Create a database client
+2020/07/22 14:58:52 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T14:58:53+07:00: method=GET, uri=/api/search?search=, status=200
+2020/07/22 15:01:36 [database.go] Begin
+2020/07/22 15:01:36 [database.go] Create a database client
+2020/07/22 15:01:36 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T15:01:36.975886+07:00: method=GET, uri=/api/search?search=, status=200
+2020/07/22 15:04:25 [database.go] Begin
+2020/07/22 15:04:25 [database.go] Create a database client
+2020/07/22 15:04:25 [database.go] Create a connection to mongodb://localhost:27017
+: method=GET, uri=/api/search?search=, status=200
+2020/07/22 15:08:27 [database.go] Begin
+2020/07/22 15:08:27 [database.go] Create a database client
+2020/07/22 15:08:27 [database.go] Create a connection to mongodb://localhost:27017
+: method=GET, uri=/api/search?search=, status=200
+2020/07/22 15:37:23 [database.go] Begin
+2020/07/22 15:37:23 [database.go] Create a database client
+2020/07/22 15:37:23 [database.go] Create a connection to mongodb://localhost:27017
+2020-07-22T15:37:23+07:00: method=GET, uri=/api/search?search=, status=200

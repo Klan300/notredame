@@ -2,12 +2,14 @@ package handlers
 
 import (
 	"net/http"
+	"strings"
 
 	"fmt"
 	"log"
 
 	"github.com/labstack/echo/v4"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo/options"
 
 	"ava.fund/alpha/Post-Covid/warehouse_api/src/internal/utils"
 )
@@ -17,11 +19,11 @@ func Profile( c echo.Context) error {
 
     symbol := c.QueryParam("symbol")
 
-    filter := bson.M{"symbol" : symbol}
+    filter := bson.M{"symbol" : strings.ToLower(symbol)}
     data := bson.M{}
 
     exchange := c.QueryParam("exchange")
-    collectionName := fmt.Sprintf("%s_profile",exchange)
+    collectionName := fmt.Sprintf("%s_profile",strings.ToLower(exchange))
     utils.Debug("[api.go] find in %s",collectionName)
 
     database, ctx := utils.Database()
@@ -52,15 +54,15 @@ func Financials( c echo.Context) error {
 
     filter := bson.M{
         "$and": []bson.M{
-            bson.M{"symbol"   : symbol},
-            bson.M{"statement": statement},
-            bson.M{"frequency": frequency},
+            bson.M{"symbol"   : strings.ToLower(symbol)},
+            bson.M{"statement": strings.ToLower(statement)},
+            bson.M{"frequency": strings.ToLower(frequency)},
         }}
 
     data := bson.M{}
 
     exchange := c.QueryParam("exchange")
-    collectionName := fmt.Sprintf("%s_profile",exchange)
+    collectionName := fmt.Sprintf("%s_profile",strings.ToLower(exchange))
     utils.Debug("[api.go] find in %s",collectionName)
     
     database, ctx := utils.Database()
@@ -87,11 +89,11 @@ func Candle( c echo.Context) error {
 
     symbol := c.QueryParam("symbol")
 
-    filter := bson.M{"symbol" : symbol}
+    filter := bson.M{"symbol" : strings.ToLower(symbol)}
     data := bson.M{}
 
     exchange := c.QueryParam("exchange")
-    collectionName := fmt.Sprintf("%s_candle",exchange)
+    collectionName := fmt.Sprintf("%s_candle",strings.ToLower(exchange))
     utils.Debug("[api.go] find in %s",collectionName)
 
     database, ctx := utils.Database()
@@ -101,7 +103,7 @@ func Candle( c echo.Context) error {
         Decode(&data)
 
     if err != nil {
-        fmt.Println(err)
+        utils.Error("[api.go] get candle", err)
         return c.NoContent(http.StatusNotFound)
     }
 
@@ -114,46 +116,32 @@ func Candle( c echo.Context) error {
     return c.JSON(http.StatusOK, data)
 }
 
-func Search( c echo.Context) error {
+func Symbol ( c echo.Context) error{
+
+    exchange := c.QueryParam("exchange")
+
+    collectionName := fmt.Sprintf("%s_securities",strings.ToLower(exchange))
+
+    filter := bson.M{}
+
+    findOptions := options.Find()
+    findOptions.SetProjection(bson.M{"symbol":1,"_id" : 0})
 
     database, ctx := utils.Database()
-
-    filterCollection := bson.M{"name": bson.M{"$regex": "_securities$"}}
-    collections, err := database.ListCollectionNames(ctx,filterCollection)
+    symbols,err := database.Collection(collectionName).Find(ctx,filter,findOptions)
     if err != nil {
-        utils.Error("[api.go] Get Symbol",err)
+        utils.Error("[api.go] get symbol", err)
     }
 
-    dataSet := []bson.M{}
+    var data  []bson.M
+    symbols.All(ctx,&data)
+    
+    err = database.Client().Disconnect(ctx)
 
-    search := c.QueryParam("search")
-    // exchange := c.QueryParam("exchange")
-    filter := bson.M{"$or": 
-                []interface{}{
-                    bson.M{"description" : bson.M{"$regex" :search}},
-                    bson.M{"symbol" : bson.M{"$regex" :search}},
-                },
-            }
-
-
-    for _, collection := range collections {
-        data := []bson.M{}
-        securities , err  := database.Collection(collection).Find(ctx,filter)
-        if err != nil {
-            utils.Error("[api.go] Get Symbol",err)
-        }
-
-        for securities.Next(ctx) {
-            var security bson.M
-            if err =  securities.Decode(&security); err != nil {
-                log.Fatal(err)
-            }
-            data = append(data,security)
-        }
-
-        dataSet = append(dataSet,data...)
+    if err != nil {
+        log.Panicln(err)
     }
 
-    return c.JSON(http.StatusOK, dataSet)
+    return c.JSON(http.StatusOK, data)
 }
 
