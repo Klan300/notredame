@@ -131,7 +131,7 @@ func Search( c echo.Context) error {
     filter := bson.M{"$or": 
                 []interface{}{
                     bson.M{"description" : bson.M{"$regex" :search}},
-                    bson.M{"symbol" : bson.M{"$regex" :search}√},
+                    bson.M{"symbol" : bson.M{"$regex" :search}},
                 },
             }
 
