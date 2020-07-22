@@ -15,12 +15,12 @@ func Database() (*mongo.Database, context.Context){
     Debug("[database.go] Create a database client")
 	client, err := mongo.NewClient(options.
 		Client().
-		ApplyURI(Config.Source.Host).
-		SetAuth(
-		options.Credential{
-			Username: Config.Source.Username, 
-			Password: Config.Source.Password,
-		}))
+		ApplyURI(Config.Source.Host))
+		// SetAuth(
+		// options.Credential{
+		// 	Username: Config.Source.Username, 
+		// 	Password: Config.Source.Password,
+		// }))
 
 	
     if err != nil {

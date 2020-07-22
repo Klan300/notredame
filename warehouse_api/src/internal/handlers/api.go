@@ -118,7 +118,7 @@ func Search( c echo.Context) error {
 
     database, ctx := utils.Database()
 
-    filterCollection := bson.M{"name": bson.M{"$regex": "securities"}}
+    filterCollection := bson.M{"name": bson.M{"$regex": "_securities$"}}
     collections, err := database.ListCollectionNames(ctx,filterCollection)
     if err != nil {
         utils.Error("[api.go] Get Symbol",err)
