@@ -39,7 +39,7 @@ func Writer(responses chan *Response) {
                         filter = bson.M{"symbol": strings.ToLower(response.Request.Symbol)}
                         replace = bson.M{
                             "symbol": strings.ToLower(response.Request.Symbol),
-                            "data"  : data
+                            "data"  : data,
                         }
 
                     case "financials":
@@ -48,21 +48,21 @@ func Writer(responses chan *Response) {
                                 bson.M{"symbol"   : strings.ToLower(response.Request.Symbol)},
                                 bson.M{"statement": response.Request.Statement},
                                 bson.M{"frequency": response.Request.Frequency},
-                            }
+                            },
                         }
 
                         replace = bson.M{
                             "symbol"   : strings.ToLower(response.Request.Symbol),
                             "frequency": response.Request.Frequency,
                             "statement": response.Request.Statement,
-                            "data"     : data
+                            "data"     : data,
                         }
 
                     case "candle":
                         filter = bson.M{"symbol": strings.ToLower(response.Request.Symbol)}
                         replace = bson.M{
                             "symbol": strings.ToLower(response.Request.Symbol),
-                            "data"  : data
+                            "data"  : data,
                         }
                 }
 

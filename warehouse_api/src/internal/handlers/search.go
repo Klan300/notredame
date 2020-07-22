@@ -54,7 +54,8 @@ func Search(c echo.Context) error {
     sorter := options.Find()
     sorter.SetSort(bson.M{ "symbol": 1})
     if limit != "" {
-        if limit, err := strconv.ParseInt(limit, 10, 64); err != nil {
+        limit, err := strconv.ParseInt(limit, 10, 64)
+        if err != nil {
             utils.Debug("[search.go] %v", err)
             return c.NoContent(http.StatusBadRequest)
         }

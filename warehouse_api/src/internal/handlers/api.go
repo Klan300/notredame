@@ -5,7 +5,6 @@ import (
     "strings"
 
     "fmt"
-    "log"
 
     "github.com/labstack/echo/v4"
     "go.mongodb.org/mongo-driver/bson"
@@ -58,7 +57,7 @@ func Financials(c echo.Context) error {
             bson.M{"symbol"   : symbol},
             bson.M{"statement": statement},
             bson.M{"frequency": frequency},
-        }
+        },
     }
     data := bson.M{}
     err  := database.

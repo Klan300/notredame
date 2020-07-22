@@ -4,7 +4,7 @@ services:
     warehouse_cloning:
         container_name: warehouse_cloning
         build: ./warehouse_cloning
-        image: warehouse_cloning:2.3
+        image: warehouse_cloning:2.4
 
         depends_on:
             - warehouse_mongo
@@ -32,11 +32,12 @@ services:
         ports:
             - "27017:27017"
 
-        volumes:
-            - /data/db:/data/db
+        # volumes:
+        #     - /Users/data/db:/data/db
 
 
-    mongo-express:
+    mongo_express:
+        container_name: mongo_express
         image: mongo-express:0.54.0
 
         restart: always

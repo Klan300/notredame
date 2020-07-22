@@ -35,7 +35,7 @@ func main() {
     api.GET("/financials/:statement/:frequency", handlers.Financials) 
     api.GET("/profile", handlers.Profile)
     api.GET("/candle", handlers.Candle)
-    api.GET("/symbols", handlers.Symbol)
+    api.GET("/symbols", handlers.Symbols)
     api.GET("/search", handlers.Search)
 
     e.Logger.Fatal(e.Start(utils.Config.Target.Host))

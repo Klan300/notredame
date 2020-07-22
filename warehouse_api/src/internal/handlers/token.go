@@ -3,7 +3,6 @@ package handlers
 import (
     "net/http"
     "time"
-    "log"
 
     "github.com/dgrijalva/jwt-go"
     "github.com/labstack/echo/v4"

@@ -1,4 +1,5 @@
 config.yaml
 logs/
 main
-.vscode
+.vscode/
+
