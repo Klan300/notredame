@@ -125,8 +125,8 @@ func Symbols(c echo.Context) error {
 	var data []bson.M
 	cursor.All(ctx, &data)
 	if err != nil {
-		utils.Error("[api.go] %v", err)
-		return c.NoContent(http.StatusNotFound)
+		utils.Debug("[api.go] %v", err)
+		return c.NoContent(http.StatusInternalServerError)
 	}
 
 	var symbols []interface{}

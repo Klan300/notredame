@@ -24,7 +24,7 @@ func main() {
 	e.Use(middleware.Recover())
 	e.Use(middleware.CORS())
 	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
-		Format:  "${time_rfc3339}: FROM: ${remote_ip} ${method}: ${uri} RETURN: ${status}\n",
+		Format:  "${time_rfc3339}: FROM ${remote_ip} ${method} ${uri} RETURN ${status}\n",
 		Skipper: middleware.DefaultSkipper,
 		Output:  utils.Config.Logging.Outputs(),
 	}))

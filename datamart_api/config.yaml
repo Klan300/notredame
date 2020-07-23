@@ -1,0 +1,23 @@
+source:
+    database: Datamart
+    host: mongodb://warehouse_mongo:27017
+    username: admin
+    password: admin
+
+target:
+    host: :1324
+
+authen:
+    usernames:
+        - yort
+        - dome
+        - blank
+    secret:
+        - Post-covid
+    expire: 2030-01-01
+
+logging:
+    level: debug
+    stdout: true
+    dirname: "./logs"
+

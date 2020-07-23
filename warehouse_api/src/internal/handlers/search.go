@@ -70,8 +70,8 @@ func Search(c echo.Context) error {
 	var data []bson.M
 	cursor.All(ctx, &data)
 	if err != nil {
-		utils.Error("[search.go] %v", err)
-		return c.NoContent(http.StatusNotFound)
+		utils.Debug("[search.go] %v", err)
+		return c.NoContent(http.StatusInternalServerError)
 	}
 
 	return c.JSON(http.StatusOK, data)
