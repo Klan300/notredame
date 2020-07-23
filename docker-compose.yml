@@ -4,7 +4,7 @@ services:
     warehouse_cloning:
         container_name: warehouse_cloning
         build: ./warehouse_cloning
-        image: warehouse_cloning:2.4
+        image: warehouse_cloning:2.6
 
         depends_on:
             - warehouse_mongo
@@ -12,7 +12,7 @@ services:
     warehouse_api:
         container_name: warehouse_api
         build: ./warehouse_api
-        image: warehouse_api:2.1
+        image: warehouse_api:2.1.2
 
         depends_on: 
             - warehouse_mongo
@@ -32,8 +32,8 @@ services:
         ports:
             - "27017:27017"
 
-        # volumes:
-        #     - /Users/data/db:/data/db
+        volumes:
+             - ~/data/db:/data/db
 
 
     mongo_express:
@@ -50,7 +50,7 @@ services:
             ME_CONFIG_MONGODB_ADMINPASSWORD: admin
          
         ports:
-            - 8081:8081
+            - "8081:8081"
             
         depends_on:
             - warehouse_mongo
