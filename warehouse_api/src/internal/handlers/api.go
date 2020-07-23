@@ -131,9 +131,7 @@ func Symbols(c echo.Context) error {
 
 	var symbols []interface{}
 	for _, element := range data {
-		for _, value := range element {
-            symbols = append(symbols,value)
-        }
+        symbols = append(symbols,element["symbol"])
 	}
 
 	return c.JSON(http.StatusOK, symbols)
