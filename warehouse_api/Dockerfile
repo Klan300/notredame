@@ -10,4 +10,4 @@ RUN go build -o ../server ./cmd/server.go
 
 EXPOSE 1323
 
-ENTRYPOINT [ "../server", "../config.yaml" ]
+ENTRYPOINT ["../server", "../config.yaml"]

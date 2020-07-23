@@ -1,4 +1,6 @@
-config.yaml
+.vscode/
 logs/
+config.yaml
 main
-.vscode
+
+

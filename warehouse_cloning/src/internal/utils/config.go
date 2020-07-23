@@ -34,7 +34,7 @@ type ConfigDefinition struct {
 }
 
 
-var Config *ConfigDefinition
+var Config *ConfigDefinition = new(ConfigDefinition)
 func LoadConfig(filePath string){
 
     viper.AutomaticEnv()
@@ -42,7 +42,7 @@ func LoadConfig(filePath string){
 
     err := viper.ReadInConfig()
     if err != nil {
-        log.Panicf("[config.go] %s\n", err)
+        log.Panicf("[config.go] %v\n", err)
     }
 
     viper.Unmarshal(&Config)

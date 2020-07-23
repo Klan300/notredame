@@ -1,11 +1,11 @@
 package workers
 
 import (
-	"fmt"
-	"net/http"
-	"time"
+    "fmt"
+    "net/http"
+    "time"
 
-	"ava.fund/alpha/Post-Covid/warehouse_cloning/src/internal/utils"
+    "ava.fund/alpha/Post-Covid/warehouse_cloning/src/internal/utils"
 )
 
 func Producer(securities []Security) chan *Request {
