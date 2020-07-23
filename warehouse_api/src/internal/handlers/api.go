@@ -123,7 +123,7 @@ func Symbols(c echo.Context) error {
 	}
 
 	var data []bson.M
-	cursor.All(ctx,&data)
+	cursor.All(ctx, &data)
 	if err != nil {
 		utils.Error("[api.go] %v", err)
 		return c.NoContent(http.StatusNotFound)
@@ -131,7 +131,7 @@ func Symbols(c echo.Context) error {
 
 	var symbols []interface{}
 	for _, element := range data {
-        symbols = append(symbols,element["symbol"])
+		symbols = append(symbols, element["symbol"])
 	}
 
 	return c.JSON(http.StatusOK, symbols)
