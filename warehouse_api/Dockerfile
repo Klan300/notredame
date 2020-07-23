@@ -6,8 +6,8 @@ COPY ./ $WAREHOUSE_API_HOME
 WORKDIR $WAREHOUSE_API_HOME/src
 
 RUN go mod download
-RUN go build -o ../server ./server/server.go 
+RUN go build -o ../server ./cmd/server.go 
 
 EXPOSE 1323
 
-ENTRYPOINT [ "../server", "../config.yaml" ]
+ENTRYPOINT ["../server", "../config.yaml"]

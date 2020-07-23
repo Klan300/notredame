@@ -3,7 +3,6 @@ package handlers
 import (
 	"net/http"
 	"time"
-	"log"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo/v4"
@@ -13,28 +12,31 @@ import (
 
 func Token(c echo.Context) error {
 
-    username := c.QueryParam("username")
-    if !utils.Config.Authen.Exists(username) {
-        return c.NoContent(http.StatusUnauthorized)
-    }
+	utils.Debug("[token.go] Begin")
+	username := c.QueryParam("username")
+	if !utils.Config.Authen.Exists(username) {
+		utils.Debug("[token.go] Token requested for an unauthorized user %s", username)
+		return c.NoContent(http.StatusUnauthorized)
+	}
 
-    t, _ := time.Parse("2006-01-02",utils.Config.Authen.Expire)    
+	expire, _ := time.Parse("2006-01-02", utils.Config.Authen.Expire)
 
-    claims             := jwt.MapClaims{}
-    claims["username"] = username
-    claims["exp"]      = t.Unix()
-    time.Now().Day()
+	claims := jwt.MapClaims{}
+	claims["username"] = username
+	claims["exp"] = expire.Unix()
 
-    token, err := jwt.
-        NewWithClaims(jwt.SigningMethodHS256, claims).
-        SignedString([]byte(utils.Config.Authen.Secret))
+	utils.Debug("[token.go] Generate token for user %s", username)
+	token, err := jwt.
+		NewWithClaims(jwt.SigningMethodHS256, claims).
+		SignedString([]byte(utils.Config.Authen.Secret))
 
-    if err != nil {
-        log.Panicf("[token.go] %s\n", err)
-    }
+	if err != nil {
+		utils.Error("[token.go] %v", err)
+	}
 
-    return c.JSON(http.StatusOK, echo.Map{
-        "username" : username,
-        "token"    : token,
-    })
+	utils.Debug("[token.go] End")
+	return c.JSON(http.StatusOK, echo.Map{
+		"username": username,
+		"token":    token,
+	})
 }

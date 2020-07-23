@@ -1,68 +1,66 @@
 package utils
 
 import (
-	"io"
-	"log"
+    "io"
+    "log"
 
-	"github.com/spf13/viper"
+    "github.com/spf13/viper"
 )
 
 type ConfigDefinition struct {
-	Source struct {
-		Host     string
-		Database string
-		Username string
-		Password string
-	}
+    Source struct {
+        Host     string
+        Database string
+        Username string
+        Password string
+    }
 
-	Target struct {
-		Host string
-	}
+    Target struct {
+        Host string
+    }
 
-	Authen AuthenDefinition
-
-	Logging LoggingDefinition
+    Authen AuthenDefinition
+    Logging LoggingDefinition
 }
 
 type AuthenDefinition struct {
-	Usernames []string
-	Secret    string
-	Expire    string
+    Usernames []string
+    Secret      string
+    Expire      string
 }
 
 type LoggingDefinition struct {
-	Level         string
-		Stdout        bool
-		Dirname       string
+    Level     string
+    Stdout    bool
+    Dirname   string
 }
 
 var Config *ConfigDefinition = new(ConfigDefinition)
 
 func LoadConfig(filePath string) {
 
+    viper.AutomaticEnv()
+    viper.SetConfigFile(filePath)
 
-	viper.AutomaticEnv()
-	viper.SetConfigFile(filePath)
-
-	err := viper.ReadInConfig()
-	if err != nil {
-		log.Panicf("[config.go] %s\n", err)
-	}
+    err := viper.ReadInConfig()
+    if err != nil {
+        log.Panicf("[config.go] %v\n", err)
+    }
 
     viper.Unmarshal(&Config)
-	LoadLoggingConfig()
+    LoadLoggingConfig()
 }
 
 func (authen *AuthenDefinition) Exists(lookup string) bool {
 
-	for _, username := range authen.Usernames {
-		if username == lookup {
-			return true
-		}
-	}
-	return false
+    for _, username := range authen.Usernames {
+        if username == lookup {
+            return true
+        }
+    }
+    return false
 }
 
 func (logging *LoggingDefinition) Outputs() io.Writer {
-	return log.Writer()
+    return log.Writer()
 }

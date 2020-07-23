@@ -13,97 +13,88 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-
-
 func process(request *http.Request, exchange string) []Security {
-    client := http.Client{}
+	client := http.Client{}
 
-    response, err := client.Do(request)
-    if err != nil {
-        utils.Error("[reader.go] %v", err)
-    }
-    
-    var securities []Security
-    data, _ := ioutil.ReadAll(response.Body)
-    err = json.Unmarshal(data, &securities)
-    if err != nil {
-        utils.Error("[reader.go] %v", err)
-    }
+	response, err := client.Do(request)
+	if err != nil {
+		utils.Error("[reader.go] %v", err)
+	}
 
-    for i := range securities {
-        securities[i].Exchange = strings.ToLower(exchange)
-        securities[i].Symbol = strings.ToLower(securities[i].Symbol)
-    }
+	var securities []Security
+	data, _ := ioutil.ReadAll(response.Body)
+	err = json.Unmarshal(data, &securities)
+	if err != nil {
+		utils.Error("[reader.go] %v", err)
+	}
 
-    return securities
+	for i := range securities {
+		securities[i].Exchange = strings.ToLower(exchange)
+		securities[i].Symbol = strings.ToLower(securities[i].Symbol)
+	}
+
+	return securities
 
 }
 
-
 func RetrieveSecurities() []Security {
 
-    utils.Debug("[reader.go] Begin")
-    database, ctx := utils.Database()
-    defer utils.Debug("[reader.go] Disconnect from database server")
-    defer database.Client().Disconnect(ctx)
-    
-    
-    var operations []mongo.WriteModel
-    var securities []Security
-    for _, exchange := range utils.Config.Exchanges {
+	utils.Debug("[reader.go] Begin")
+	database, ctx := utils.Database()
+	defer utils.Debug("[reader.go] Disconnect from database server")
+	defer database.Client().Disconnect(ctx)
 
-        endpoint := fmt.Sprintf(
-            utils.Endpoints["symbol"], 
-            utils.Config.Source.Host, 
-            exchange, 
-            utils.Config.Source.Token)
+	var securities []Security
+	for _, exchange := range utils.Config.Exchanges {
 
+		endpoint := fmt.Sprintf(
+			utils.Endpoints["symbol"],
+			utils.Config.Source.Host,
+			exchange,
+			utils.Config.Source.Token)
 
-        request, err := http.NewRequest("GET", endpoint, nil)
-        if err != nil {
-            utils.Error("[reader.go] %v", err)
-        }
+		request, err := http.NewRequest("GET", endpoint, nil)
+		if err != nil {
+			utils.Error("[reader.go] %v", err)
+		}
 
-        securitiesForExchange := process(request, exchange)
-        securities = append(securities, securitiesForExchange...)
+		securitiesForExchange := process(request, exchange)
+		securities = append(securities, securitiesForExchange...)
 
-        var operationsForExchange []mongo.WriteModel
-        for _, security := range securitiesForExchange {
-            
-            filter := bson.M{"symbol": security.Symbol}
+		var operationsForExchange []mongo.WriteModel
+		for _, security := range securitiesForExchange {
 
-            operation := mongo.NewReplaceOneModel()
-            operation.SetFilter(filter)
-            operation.SetReplacement(security)
-            operation.SetUpsert(true)
+			filter := bson.M{"symbol": security.Symbol}
 
-            operationsForExchange = append(operationsForExchange, operation)
+			operation := mongo.NewReplaceOneModel()
+			operation.SetFilter(filter)
+			operation.SetReplacement(security)
+			operation.SetUpsert(true)
 
-        }
-        
-        collectionName := fmt.Sprintf("%s_securities", strings.ToLower(exchange))
-        collectionInstance := database.Collection(collectionName)
+			operationsForExchange = append(operationsForExchange, operation)
 
-        operations = append(operations, operationsForExchange...)
+		}
 
-        result, err := collectionInstance.BulkWrite(ctx, operationsForExchange)        
-        if err != nil {
-            utils.Error("[reader.go] %v", err)
-        } else {
-            utils.Debug("[reader.go] BulkWrite: %v", result)
-        }
+		collectionName := fmt.Sprintf("%s_securities", strings.ToLower(exchange))
+		collectionInstance := database.Collection(collectionName)
+		result, err := collectionInstance.BulkWrite(ctx, operationsForExchange)
+		if err != nil {
+			utils.Error("[reader.go] %v", err)
+		} else {
+			utils.Debug("[reader.go] BulkWrite: %v", result)
+		}
 
-    }
-    collectionAllSecurity := database.Collection("securities")
+		collectionName = "securities"
+		collectionInstance = database.Collection(collectionName)
+		result, err = collectionInstance.BulkWrite(ctx, operationsForExchange)
+		if err != nil {
+			utils.Error("[reader.go] %v", err)
+		} else {
+			utils.Debug("[reader.go] BulkWrite: %v", result)
+		}
 
-    result, err := collectionAllSecurity.BulkWrite(ctx, operations)        
-        if err != nil {
-            utils.Error("[reader.go] %v", err)
-        } else {
-            utils.Debug("[reader.go] BulkWrite: %v", result)
-        }
+	}
 
-    utils.Debug("[reader.go] End")
-
-    return securities
+	utils.Debug("[reader.go] End")
+	return securities
 }
