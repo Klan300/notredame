@@ -8,6 +8,6 @@ WORKDIR $DATAMART_API_HOME/src
 RUN go mod download
 RUN go build -o ../server ./cmd/server.go 
 
-EXPOSE 1324
+EXPOSE 1323
 
 ENTRYPOINT ["../server", "../config.yaml"]
