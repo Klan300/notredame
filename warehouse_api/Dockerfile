@@ -1,6 +1,6 @@
 FROM golang:1.14-alpine
 
-ENV WAREHOUSE_API_HOME "$GOPATH/src/ava.fund/alpha/Post-Covid/warehouse_api"
+ENV WAREHOUSE_API_HOME "$GOPATH/src/ava.fund/alpha/Notre-Dame/warehouse_api"
 
 COPY ./ $WAREHOUSE_API_HOME
 WORKDIR $WAREHOUSE_API_HOME/src

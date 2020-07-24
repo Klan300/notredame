@@ -1,6 +1,6 @@
 FROM golang:1.14-alpine
 
-ENV DATAMART_API_HOME "$GOPATH/src/ava.fund/alpha/Post-Covid/datamart_api"
+ENV DATAMART_API_HOME "$GOPATH/src/ava.fund/alpha/Notre-Dame/datamart_api"
 
 COPY ./ DATAMART_API_HOME
 WORKDIR $DATAMART_API_HOME/src
