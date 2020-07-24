@@ -5,8 +5,6 @@ import (
 	"net/http"
 	"strings"
 
-	"fmt"
-
 	"github.com/labstack/echo/v4"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -14,59 +12,55 @@ import (
 	"ava.fund/alpha/Post-Covid/datamart_api/src/internal/utils"
 )
 
-type Score struct {
-    Exchange string
-    Symbol string 
-    Expert string
-    Tag string
-    Data interface{}
-}
+
 
 func Update(c echo.Context) error {
 
-    expert := c.QueryParam("expert")
-    tag := c.QueryParam("tag")
+    expert := strings.ToLower(c.QueryParam("expert"))
+    tag    := strings.ToLower(c.QueryParam("tag"))
 
-    if expert == "" || tag == ""{
+    if expert == "" {
         return c.NoContent(http.StatusBadRequest)
     }
 
-    collectionName := fmt.Sprintf("scores")
-    database, ctx := utils.Database()
+    utils.Debug("[api.go] Read scores from request")
+    var scores []utils.Score
+    err := json.NewDecoder(c.Request().Body).Decode(&scores)
+    if err != nil {
+        return c.JSON(http.StatusBadRequest, err)
+    }
+
+    if tag != "" {
+        for i := range scores {
+            scores[i].Exchange = strings.ToLower(scores[i].Exchange)
+            scores[i].Symbol   = strings.ToLower(scores[i].Symbol)
+            scores[i].Expert   = expert
+            scores[i].Tag      = tag
+        }
+    }
+
+    if tag != "latest" {
+        for _, score := range scores {
+            score.Tag = "latest"
+            scores = append(scores, score)
+        }
+    }
+
+    database, ctx  := utils.Database()
     defer utils.Debug("[api.go] Disconnect from database server")
     defer database.Client().Disconnect(ctx)
 
-    var scores []Score
-    err :=  json.NewDecoder(c.Request().Body).Decode(&scores)
-    if err != nil {
-        return c.JSON(http.StatusBadRequest,err)
-    }
-
-    var lastestScores []Score
-    utils.Debug("[api.go] decorate struct score")
-    for i := range scores {
-
-        scores[i].Exchange= strings.ToLower(scores[i].Exchange)
-        scores[i].Symbol = strings.ToLower(scores[i].Symbol)
-        scores[i].Expert = strings.ToLower(expert)
-        scores[i].Tag = "lastest"
-
-        lastestScores = append(lastestScores,scores[i])
-        scores[i].Tag = strings.ToLower(tag)
-
-    }
-
-    scores = append(scores,lastestScores...)
-
-    var operationsForScore []mongo.WriteModel
+    
+    utils.Debug("[api.go] Update scores to database")
+    var operations []mongo.WriteModel
     for _, score := range scores {
 
         filter := bson.M{
             "$and": []bson.M{
-                bson.M{"symbol"   : strings.ToLower(score.Symbol)},
-                bson.M{"exchange" : strings.ToLower(score.Exchange)},
-                bson.M{"expert"   : strings.ToLower(expert)},
-                bson.M{"tag"      : strings.ToLower(score.Tag)},
+                bson.M{"symbol"  : score.Symbol},
+                bson.M{"exchange": score.Exchange},
+                bson.M{"expert"  : score.Expert},
+                bson.M{"tag"     : score.Tag},
             },
         }
 
@@ -75,68 +69,73 @@ func Update(c echo.Context) error {
         operation.SetUpdate(score)
         operation.SetUpsert(true)
 
-        operationsForScore = append(operationsForScore, operation)
+        operations = append(operations, operation)
 
     }
 
+    collectionName     := "scores"
     collectionInstance := database.Collection(collectionName)
-    result, err := collectionInstance.BulkWrite(ctx, operationsForScore)
+    result, err := collectionInstance.BulkWrite(ctx, operations)
     if err != nil {
-        utils.Error("[api.go] %v", err)
+        utils.Debug("[api.go] %v", err)
+        return c.JSON(http.StatusInternalServerError, err)
     } else {
-        utils.Debug("[api.go] BulkWrite: %v", result)
+        utils.Debug("[api.go] BulkWrite: %d record upserted", result.UpsertedCount)
+        return c.NoContent(http.StatusOK)
     }
 
-    return c.JSON(http.StatusOK,result)
+    
 
 }
 
+
 func Replace(c echo.Context) error {
 
-    expert := c.QueryParam("expert")
-    tag := c.QueryParam("tag")
+    expert := strings.ToLower(c.QueryParam("expert"))
+    tag    := strings.ToLower(c.QueryParam("tag"))
 
-    if expert == "" || tag == ""{
+    if expert == "" {
         return c.NoContent(http.StatusBadRequest)
     }
 
-    collectionName := fmt.Sprintf("scores")
-    database, ctx := utils.Database()
+    utils.Debug("[api.go] Read scores from request")
+    var scores []utils.Score
+    err :=  json.NewDecoder(c.Request().Body).Decode(&scores)
+    if err != nil {
+        return c.JSON(http.StatusBadRequest, err)
+    }
+
+    if tag != "" {
+        for i := range scores {
+            scores[i].Exchange = strings.ToLower(scores[i].Exchange)
+            scores[i].Symbol   = strings.ToLower(scores[i].Symbol)
+            scores[i].Expert   = expert
+            scores[i].Tag      = tag
+        }
+    }
+
+    if tag != "latest" {
+        for _, score := range scores {
+            score.Tag = "latest"
+            scores = append(scores, score)
+        }
+    }
+
+    database, ctx  := utils.Database()
     defer utils.Debug("[api.go] Disconnect from database server")
     defer database.Client().Disconnect(ctx)
 
-    var scores []Score
-    err :=  json.NewDecoder(c.Request().Body).Decode(&scores)
-    if err != nil {
-        utils.Debug("[api.go] %v",err)
-        return c.NoContent(http.StatusBadRequest)
-    }
-
-    utils.Debug("[api.go] List scores")
-
-    var lastestScores []Score
-    for i := range scores {
-
-        scores[i].Exchange= strings.ToLower(scores[i].Exchange)
-        scores[i].Symbol = strings.ToLower(scores[i].Symbol)
-        scores[i].Expert = strings.ToLower(expert)
-        scores[i].Tag = "lastest"
-
-        lastestScores = append(lastestScores,scores[i])
-        scores[i].Tag = strings.ToLower(tag)
-    }
-
-    scores = append(scores,lastestScores...)
-
-    var operationsForScore []mongo.WriteModel
+    
+    utils.Debug("[api.go] Replace scores in database")
+    var operations []mongo.WriteModel
     for _, score := range scores {
-        
+
         filter := bson.M{
             "$and": []bson.M{
-                bson.M{"symbol"   : strings.ToLower(score.Symbol)},
-                bson.M{"exchange": strings.ToLower(score.Exchange)},
-                bson.M{"expert": strings.ToLower(expert)},
-                bson.M{"tag": strings.ToLower(score.Tag)},
+                bson.M{"symbol"  : score.Symbol},
+                bson.M{"exchange": score.Exchange},
+                bson.M{"expert"  : score.Expert},
+                bson.M{"tag"     : score.Tag},
             },
         }
 
@@ -145,78 +144,74 @@ func Replace(c echo.Context) error {
         operation.SetReplacement(score)
         operation.SetUpsert(true)
 
-        operationsForScore = append(operationsForScore, operation)
+        operations = append(operations, operation)
 
     }
 
+    collectionName     := "scores"
     collectionInstance := database.Collection(collectionName)
-    result, err := collectionInstance.BulkWrite(ctx, operationsForScore)
+    result, err := collectionInstance.BulkWrite(ctx, operations)
     if err != nil {
         utils.Debug("[api.go] %v", err)
-        return c.NoContent(http.StatusInternalServerError)
+        return c.JSON(http.StatusInternalServerError, err)
     } else {
-        utils.Debug("[api.go] BulkWrite: %v", result)
+        utils.Debug("[api.go] BulkWrite: %d record upsert", result.UpsertedCount)
+        return c.NoContent(http.StatusOK)    
     }
-
-    return c.JSON(http.StatusOK,result)
-
 }
+
 
 func Find(c echo.Context) error {
 
-    expert 	 := strings.ToLower(c.QueryParam("expert"))
-    tag 	 := strings.ToLower(c.QueryParam("tag"))
+    expert   := strings.ToLower(c.QueryParam("expert"))
+    tag      := strings.ToLower(c.QueryParam("tag"))
     exchange := strings.ToLower(c.QueryParam("exchange"))
     symbol   := strings.ToLower(c.QueryParam("symbol"))
 
     if expert == "" {
         return c.NoContent(http.StatusBadRequest)
     }
-
     if tag == "" {
-        tag = "lastest"
+        tag = "latest"
     }
 
-    collectionName := "scores"
     database, ctx := utils.Database()
     defer utils.Debug("[api.go] Disconnect from database server")
     defer database.Client().Disconnect(ctx)
 
-    var andCondition []bson.M
-
-    switch {
-        case exchange != "":
-            andCondition = append(andCondition,
-                            bson.M{"exchange": exchange})
-            fallthrough
-        case symbol != "":
-            andCondition = append(andCondition, 
-                            bson.M{"symbol": symbol})
+    utils.Debug("[api.go] Find scores from %s:%s", expert, tag)
+    conditions := []bson.M{
+        {"expert": expert},
+        {"tag"   : tag},
     }
 
-    andCondition = append(andCondition, bson.M{"tag": tag}, bson.M{"expert": expert})
-
-    filter := bson.M{
-        "$and": andCondition,
+    if exchange != "" {
+        conditions = append(conditions, bson.M{"exchange": exchange})
+    }
+    if symbol != "" {
+        conditions = append(conditions, bson.M{"symbol": symbol})
     }
 
-    cursor, err := database.
-            Collection(collectionName).
-            Find(ctx,filter)
+    collectionName := "scores"
+    filter         := bson.M{ "$and": conditions}
+    cursor, err    := database.
+        Collection(collectionName).
+        Find(ctx, filter)
+
     if err != nil {
-        utils.Debug("[api.go] %v",err)
-        return c.NoContent(http.StatusNotFound)
+        utils.Debug("[api.go] %v", err)
+        return c.JSON(http.StatusInternalServerError, err)
     }
     
-    var data []Score
+    var data []utils.Score
     cursor.All(ctx, &data)
     if err != nil {
         utils.Debug("[api.go] %v", err)
-        return c.NoContent(http.StatusInternalServerError)
+        return c.JSON(http.StatusInternalServerError, err)
     }
 
     if data == nil {
-        data = make([]Score, 0)
+        data = make([]utils.Score, 0)
     }
 
     return c.JSON(http.StatusOK, data)
