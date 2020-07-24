@@ -1,17 +1,15 @@
 package handlers
 
 import (
-    "encoding/json"
-    "net/http"
-    "strings"
+	"encoding/json"
+	"net/http"
+	"strings"
 
-    "fmt"
+	"github.com/labstack/echo/v4"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo"
 
-    "github.com/labstack/echo/v4"
-    "go.mongodb.org/mongo-driver/bson"
-    "go.mongodb.org/mongo-driver/mongo"
-
-    "ava.fund/alpha/Post-Covid/datamart_api/src/internal/utils"
+	"ava.fund/alpha/Post-Covid/datamart_api/src/internal/utils"
 )
 
 
@@ -44,7 +42,7 @@ func Update(c echo.Context) error {
     if tag != "latest" {
         for _, score := range scores {
             score.Tag = "latest"
-            scores = append(scores, scores)
+            scores = append(scores, score)
         }
     }
 
@@ -82,7 +80,7 @@ func Update(c echo.Context) error {
         utils.Debug("[api.go] %v", err)
         return c.JSON(http.StatusInternalServerError, err)
     } else {
-        utils.Debug("[api.go] BulkWrite: %v", result)
+        utils.Debug("[api.go] BulkWrite: %d record upserted", result.UpsertedCount)
         return c.NoContent(http.StatusOK)
     }
 
@@ -119,7 +117,7 @@ func Replace(c echo.Context) error {
     if tag != "latest" {
         for _, score := range scores {
             score.Tag = "latest"
-            scores = append(scores, scores)
+            scores = append(scores, score)
         }
     }
 
@@ -157,12 +155,9 @@ func Replace(c echo.Context) error {
         utils.Debug("[api.go] %v", err)
         return c.JSON(http.StatusInternalServerError, err)
     } else {
-        utils.Debug("[api.go] BulkWrite: %v", result)
-        return c.NoContent(http.StatusOK)
+        utils.Debug("[api.go] BulkWrite: %d record upsert", result.UpsertedCount)
+        return c.NoContent(http.StatusOK)    
     }
-
-    
-
 }
 
 
@@ -180,29 +175,26 @@ func Find(c echo.Context) error {
         tag = "latest"
     }
 
-    
     database, ctx := utils.Database()
     defer utils.Debug("[api.go] Disconnect from database server")
     defer database.Client().Disconnect(ctx)
 
     utils.Debug("[api.go] Find scores from %s:%s", expert, tag)
-    filter := bson.M{
-        "$and": []bson.M{
-            bson.M{"expert": expert},
-            bson.M{"tag"   : tag},
-        },
+    conditions := []bson.M{
+        {"expert": expert},
+        {"tag"   : tag},
     }
 
     if exchange != "" {
-        filter["$and"] = append(filter["$and"], bson.M{"exchange": exchange})
+        conditions = append(conditions, bson.M{"exchange": exchange})
     }
     if symbol != "" {
-        filter["$and"] = append(filter["$and"], bson.M{"symbol": symbol})
-
+        conditions = append(conditions, bson.M{"symbol": symbol})
     }
 
     collectionName := "scores"
-    cursor, err := database.
+    filter         := bson.M{ "$and": conditions}
+    cursor, err    := database.
         Collection(collectionName).
         Find(ctx, filter)
 
