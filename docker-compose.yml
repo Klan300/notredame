@@ -33,11 +33,25 @@ services:
             - "27017:27017"
 
         volumes:
-             - ~/data/db:/data/db
+             - ~/data/warehouse_mongo/db:/data/db
+
+    datamnart_mongo:
+        container_name: datamart_mongo
+        image: mongo:4.2.7
+        
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: admin
+            MONGO_INITDB_ROOT_PASSWORD: admin
+
+        ports:
+            - "27018:27017"
+
+        volumes:
+                - ~/data/datamart_mongo/db:/data/db
 
 
-    mongo_express:
-        container_name: mongo_express
+    warehouse_mongo_express:
+        container_name: warehouse_mongo_express
         image: mongo-express:0.54.0
 
         restart: always
@@ -54,3 +68,23 @@ services:
             
         depends_on:
             - warehouse_mongo
+
+
+    datamart_mongo_express:
+        container_name: datamart_mongo_express
+        image: mongo-express:0.54.0
+
+        restart: always
+
+        environment:
+            ME_CONFIG_MONGODB_SERVER: datamart_mongo
+            ME_CONFIG_BASICAUTH_USERNAME: admin
+            ME_CONFIG_BASICAUTH_PASSWORD: admin
+            ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+            ME_CONFIG_MONGODB_ADMINPASSWORD: admin
+            
+        ports:
+            - "8082:8081"
+            
+        depends_on:
+            - datamart_mongo
