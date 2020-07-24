@@ -66,7 +66,6 @@ services:
             - "1324:1323"
 
 
-
     datamart_mongo:
         container_name: datamart_mongo
         image: mongo:4.2.7
