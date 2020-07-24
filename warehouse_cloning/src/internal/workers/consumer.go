@@ -7,7 +7,7 @@ import (
     "sync"
     "time"
 
-    "ava.fund/alpha/Post-Covid/warehouse_cloning/src/internal/utils"
+    "ava.fund/alpha/Notre-Dame/warehouse_cloning/src/internal/utils"
 )
 
 func consumerProcess(request *Request) ([]byte, error) {
