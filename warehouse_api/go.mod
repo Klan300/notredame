@@ -1,4 +1,4 @@
-module ava.fund/alpha/Notre-Dame/warehouse_api
+module ava.fund/alpha/notredame/warehouse_api
 
 go 1.14
 

@@ -8,7 +8,7 @@ import (
     "go.mongodb.org/mongo-driver/bson"
     "go.mongodb.org/mongo-driver/mongo/options"
 
-    "ava.fund/alpha/Notre-Dame/warehouse_cloning/src/internal/utils"
+    "ava.fund/alpha/notredame/warehouse_cloning/src/internal/utils"
 )
 
 func Writer(responses chan *Response) {

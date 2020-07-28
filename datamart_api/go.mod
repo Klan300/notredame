@@ -1,4 +1,4 @@
-module ava.fund/alpha/Notre-Dame/datamart_api
+module ava.fund/alpha/notredame/datamart_api
 
 go 1.14
 

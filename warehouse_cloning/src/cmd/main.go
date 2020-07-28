@@ -5,8 +5,8 @@ import (
     "os"
     "sync"
 
-    "ava.fund/alpha/Notre-Dame/warehouse_cloning/src/internal/utils"
-    "ava.fund/alpha/Notre-Dame/warehouse_cloning/src/internal/workers"
+    "ava.fund/alpha/notredame/warehouse_cloning/src/internal/utils"
+    "ava.fund/alpha/notredame/warehouse_cloning/src/internal/workers"
 )
 
 func main() {

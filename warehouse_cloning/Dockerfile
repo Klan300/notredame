@@ -1,6 +1,6 @@
 FROM golang:1.14-alpine
 
-ENV WAREHOUSE_CLONING_HOME "$GOPATH/src/ava.fund/alpha/Notre-Dame/warehouse_cloning"
+ENV WAREHOUSE_CLONING_HOME "$GOPATH/src/ava.fund/alpha/notredame/warehouse_cloning"
 
 COPY ./ $WAREHOUSE_CLONING_HOME
 WORKDIR $WAREHOUSE_CLONING_HOME/src

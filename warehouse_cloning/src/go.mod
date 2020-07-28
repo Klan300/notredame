@@ -1,4 +1,4 @@
-module ava.fund/alpha/Notre-Dame/warehouse_cloning/src
+module ava.fund/alpha/notredame/warehouse_cloning/src
 
 go 1.14
 

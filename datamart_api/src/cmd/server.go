@@ -7,8 +7,8 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 
-	"ava.fund/alpha/Notre-Dame/datamart_api/src/internal/handlers"
-	"ava.fund/alpha/Notre-Dame/datamart_api/src/internal/utils"
+	"ava.fund/alpha/notredame/datamart_api/src/internal/handlers"
+	"ava.fund/alpha/notredame/datamart_api/src/internal/utils"
 )
 
 func main() {

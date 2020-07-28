@@ -7,7 +7,7 @@ import (
     "github.com/dgrijalva/jwt-go"
     "github.com/labstack/echo/v4"
 
-    "ava.fund/alpha/Notre-Dame/warehouse_api/src/internal/utils"
+    "ava.fund/alpha/notredame/warehouse_api/src/internal/utils"
 )
 
 func Token(c echo.Context) error {

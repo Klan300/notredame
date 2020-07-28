@@ -9,7 +9,7 @@ import (
     "go.mongodb.org/mongo-driver/bson"
     "go.mongodb.org/mongo-driver/mongo/options"
 
-    "ava.fund/alpha/Notre-Dame/warehouse_api/src/internal/utils"
+    "ava.fund/alpha/notredame/warehouse_api/src/internal/utils"
 )
 
 func Search(c echo.Context) error {

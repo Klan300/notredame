@@ -5,7 +5,7 @@ import (
     "net/http"
     "time"
 
-    "ava.fund/alpha/Notre-Dame/warehouse_cloning/src/internal/utils"
+    "ava.fund/alpha/notredame/warehouse_cloning/src/internal/utils"
 )
 
 func Producer(securities []Security) chan *Request {
