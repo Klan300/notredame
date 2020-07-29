@@ -13,23 +13,14 @@ func Database() (*mongo.Database, context.Context) {
 	Debug("[database.go] Begin")
 
 	Debug("[database.go] Create a database client")
-	// client, err := mongo.NewClient(options.
-	// 	Client().
-	// 	ApplyURI(Config.Source.Host).
-	// 	SetAuth(options.Credential{
-	// 		Username: Config.Source.Username,
-	// 		Password: Config.Source.Password,
-	// 	}),
-	// )
-	
 	client, err := mongo.NewClient(options.
 		Client().
-		ApplyURI("mongodb://localhost:27017"))
-	// 	SetAuth(options.Credential{
-	// 		Username: Config.Source.Username,
-	// 		Password: Config.Source.Password,
-	// 	}),
-    // )
+		ApplyURI(Config.Source.Host).
+		SetAuth(options.Credential{
+			Username: Config.Source.Username,
+			Password: Config.Source.Password,
+		}),
+	)
 
 	if err != nil {
 		Error("[database.go] %v", err)
