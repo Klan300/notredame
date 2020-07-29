@@ -1,6 +1,7 @@
 .vscode/
 logs/
-config.yaml
+config.daily.yaml
+config.weekly.yaml
 main
 
 
