@@ -57,7 +57,7 @@ services:
     datamart_api:
         container_name: datamart_api
         build: ./datamart_api
-        image: datamart_api:1.0.0
+        image: datamart_api:1.0.1
 
         depends_on: 
             - datamart_mongo
