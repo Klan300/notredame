@@ -9,6 +9,9 @@ services:
         depends_on:
             - warehouse_mongo
 
+        volumes:
+            - ~/logs/warehouse_cloning:../logs
+
     warehouse_api:
         container_name: warehouse_api
         build: ./warehouse_api
@@ -20,7 +23,9 @@ services:
         ports: 
             - "1323:1323"            
 
-    
+        volumes:
+            - ~/logs/warehouse_api:../logs
+
     warehouse_mongo:
         container_name: warehouse_mongo
         image: mongo:4.2.7
@@ -64,6 +69,9 @@ services:
 
         ports: 
             - "1324:1323"
+
+        volumes:
+            - ~/logs/datamart_api:../logs
 
 
     datamart_mongo:
