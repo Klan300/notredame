@@ -24,7 +24,7 @@ services:
             - "1323:1323"            
 
         volumes:
-            - ~/logs/warehouse_api:../logs
+            - ~/logs/warehouse_api:/logs
 
     warehouse_mongo:
         container_name: warehouse_mongo
