@@ -10,7 +10,7 @@ services:
             - warehouse_mongo
 
         volumes:
-            - ~/logs/warehouse_cloning:../logs
+            - ~/logs/warehouse_cloning:/logs
 
     warehouse_api:
         container_name: warehouse_api
@@ -71,7 +71,7 @@ services:
             - "1324:1323"
 
         volumes:
-            - ~/logs/datamart_api:../logs
+            - ~/logs/datamart_api:/logs
 
 
     datamart_mongo:
