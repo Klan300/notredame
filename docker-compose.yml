@@ -4,7 +4,7 @@ services:
     warehouse_cloning:
         container_name: warehouse_cloning
         build: ./warehouse_cloning
-        image: warehouse_cloning:2.6.1
+        image: warehouse_cloning:1.0.0
 
         depends_on:
             - warehouse_mongo
@@ -12,7 +12,7 @@ services:
     warehouse_api:
         container_name: warehouse_api
         build: ./warehouse_api
-        image: warehouse_api:2.1.3
+        image: warehouse_api:1.0.0
 
         depends_on: 
             - warehouse_mongo
@@ -57,7 +57,7 @@ services:
     datamart_api:
         container_name: datamart_api
         build: ./datamart_api
-        image: datamart_api:1.1
+        image: datamart_api:1.0.0
 
         depends_on: 
             - datamart_mongo
