@@ -128,7 +128,7 @@ Note that the port **1323** on the Docker container is mapped to the port **1324
 ## APIs
 ### Warehouse API reference
 
-Use the following to retrieve an authentication token:
+Use the following request to retrieve an authentication token:
 > GET /token?username={username}
 
 where {username} is one of the [authorized users](#warehouse-api-configuration) 
@@ -159,7 +159,7 @@ To search for symbols:
 
 ### Datamart API reference
 
-Use the following to retrieve an authentication token:
+Use the following request to retrieve an authentication token:
 > GET /token?username={username}
 
 where {username} is one of the [authorized users](#datamart-api-configuration) 
