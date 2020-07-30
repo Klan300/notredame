@@ -198,7 +198,7 @@ To download the data for securities associated with the expert and tag:
 
 * The parameter {expert} is required.
 * The parameter {tag} is optional and set to `latest` if omitted.
-* If {exchange} and/or {symbol} are provided, apply as additional filters when provided.
+* If {exchange} and/or {symbol} are optional, apply as additional filters when provided.
 
 ## Managing Databases
 
