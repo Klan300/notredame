@@ -133,7 +133,7 @@ Use the following to retrieve an authentication token:
 
 where {username} is one of the [authorized users](#warehouse-api-configuration) 
 
-The following endpoints require `username` and authentication `token` attached in the request **header**.
+The following endpoints require `username` and an authentication `token` attached in the request **header**.
 
 To retrieve a list of securities available in an exchange:
 > GET /api/symbols?exchange={exchange}
@@ -164,13 +164,13 @@ Use the following to retrieve an authentication token:
 
 where {username} is one of the [authorized users](#datamart-api-configuration) 
 
-The following endpoints require `username` and authentication `token` attached in the request **header**.
+The following endpoints require `username` and an authentication `token` attached in the request **header**.
 
 To upload the data:
 > PUT /api/replace?expert={expert}&tag={tag}
 > PUT /api/update?expert={expert}&tag={tag}
 
-where {expert} is the name of the human expert publishing the data, and {tag} is used for versioning the data. When data is uploaded, it will be tagged with {tag} and additionally `latest`.  The data must be a list of JSON objects attached to the request **body**, for example:
+where {expert} is the name of the human expert publishing the data, and {tag} is used for versioning the data. When data is uploaded, it will be tagged with {tag} and additionally with `latest`.  The data must be a list of JSON objects attached to the request **body**, for example:
 ```JSON
     [
         {
@@ -198,7 +198,7 @@ To download the data for securities associated with the expert and tag:
 
 * The parameter {expert} is required.
 * The parameter {tag} is optional and set to `latest` if omitted.
-* If {exchange} and {symbol} optional, apply as additional filters when provided.
+* If {exchange} and/or {symbol} are provided, apply as additional filters when provided.
 
 ## Managing Databases
 
