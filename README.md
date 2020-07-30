@@ -1,245 +1,53 @@
-# notredame
-This is Document about Warehouse_api / Warehouse_cloning / Datamart_api. There was contain by docker file. Warehouse Cloning will clone data from finnhub and store into warehouse mongo and connect by warehouse api. Datamart api is api that collect scores and find scores from datamart mongo.
-## Topic
-- [**Project Setup**](##Setup)
-- [**Config**](##Config)
-- [**Api**](##Api)
+# Notre Dame
 
+This project implements 3 main services, namely: *Warehouse Cloning*, *Warehouse API*, and *Datamart API*. The services split over multiple Docker containers whose names are referred to as in `docker-compose.yml`. The container `warehouse_cloning` downloads the data from [finnhub](https://finnhub.io/) and store it in `warehouse_mongo` for further use. Users can access the downloaded data locally from  `warehouse_mongo` via `warehouse_api`. The container `datamart_api` stores proprietary data e.g. financial scores in `datamart_mongo` and allow users to retrieve them systematically. Optionally, the containers `warehouse_mongo_express` and `datamart_mongo_express` provide web-based database management systems for quick administration and maintenance.
 
-## Setup
-- **At first** If you have to fix something, You should to fix and push to github repository first 
-- **Next** After you fix or change some thing and push it to github so you have to follow this step   
+## Outline
+- [Installation](#installation)
+- [Configuations](#configuations)
+    - [Warehouse Cloning](#warehouse-cloning-configuration) 
+    - [Warehouse API](#warehouse-api-configuration) 
+    - [Datamart API](#datamart-api-configuration) 
+- [APIs](#apis)
+    - [Warehouse API](#warehouse-api-reference) 
+    - [Datamart API](#datamart-api-reference) 
+- [Managing databases](#managing-databases)
+    - [Warehouse Mongo Express](#warehouse-mongo-express)
+    - [Datamart Mongo Express](#datamart-mongo-express)
 
-1. connect to server
+## Installation
+Should there be changes to the source files,  commit and push to *this repository* before proceed to the next step. Note that the data in the databases and the system logs are stored on the host machine (outside the containers), specifically at `~/data` and `~/logs`. Therefore, the data is not lost when a newer version is installed.  These locations can be changed in `docker-comppse.yml`
+
+1. Install [docker](https://docs.docker.com/engine/install/) and [docker-compose](https://docs.docker.com/compose/install/)
+2. Clone (or pull) source files from *this repository*
+3. Add [config.yaml](#configuations) to each microservice directory
+4. In `./notredame`, run docker-compose:
 ```bash
-$ssh ubuntu@18.141.209.89
-``` 
-2. Pull or Clone from repository
-```bash
-## git clone
-$git clone 
-## or git pull from repo
-$git pull
+$ sudo docker-compose up -d
 ```
-3.  Add [**config.yaml**](##Config) to all folder 
-
-4. install [**docker**](https://docs.docker.com/engine/install/) and [**docker-compose**](https://docs.docker.com/compose/install/)
-
-5. run docker compose
-```bash
-$cd notredame
-$docker-compose up -d
+5. To stop all the microservices,
+ ```bash
+$ sudo docker-compose down
 ```
-***
-## Config
-- [**Datamart Api**](###DatamartApi_Config)
-- [**Warehouse Api**](###WarehouseApi_Config)
-- [**Warehouse Cloning**](###WarehouseCloning_Config)
 
-### DatamartApi_Config
-**source**
-> source database connection
+## Configuations
 
+### Warehouse cloning configuration
 ```yaml
 source:
-    database: datamart_mongo #database name
-    host: mongodb://datamart_mongo:27017  #database 
-    username: username #username db
-    password: password #password db
-```
-**target**
-> target port to connect
-```yaml
-target:
-    host: 0.0.0.0:1323 #port number
-```
-**authen**
-> authentication for create token and user that can connect totken
-
-```yaml
-authen:
-    usernames:
-       - name #list of user
-       - name #list of user
-    secret:
-        - secret #secret for token
-
-    expire: yyyy-mm-dd #expire date format: yyyy-mm-dd
-```
-**log**
-> log position and log level
-
-```yaml
-logging:
-    level: level #level to log (debug,error)
-    stdout: true #true,false log or not
-    dirname: /dir/to/log #directory to log
-```
-***Example***
-
-```yaml
-source:
-    database: datamart_mongo
-    host: mongodb://datamart_mongo:27017
-    username: username
-    password: password
+    host: "https://finnhub.io/api/v1/"      # endpoint host
+    token: "token"                          # authentication token
+    consumers: 20                           # number of concurrent request processors
+    wait: 60                                # waiting time (seconds) when too_many_request encountered
+    attempts: 10                            # attempts (times) when too_many_request encountered
 
 target:
-    host: 0.0.0.0:1323
-
-authen:
-    usernames:
-        - dome
-        - blank
-    secret:
-        - secret
-
-    expire: 2020-01-01
-
-logging:
-    level: debug
-    stdout: true
-    dirname: "/logs"
-```
-***
-### WarehouseApi_Config
-
-**source**
-> source database connection
-
-```yaml
-source:
-    database: warehouse_mongo #database name
-    host: mongodb://warehouse_mongo:27017 #database port
-    username: username #username db
-    password: password #password db
-```
-**target**
-> target port to connect
-```yaml
-target:
-    host: 0.0.0.0:1323 #port number
-```
-**authen**
-> authentication for create token and user that can connect totken
-
-```yaml
-authen:
-    usernames:
-       - name #list of user
-       - name #list of user
-    secret:
-        - secret #secret for token
-
-    expire: yyyy-mm-dd #expire date format: yyyy-mm-dd
-```
-**log**
-> log position and log level
-
-```yaml
-logging:
-    level: level #level to log (debug,error)
-    stdout: true #true,false log or not
-    dirname: /dir/to/log #directory to log
-```
-
-***Example***
-
-```yaml
-source:
-    database: warehouse_mongo 
-    host: mongodb://warehouse_mongo:27017 
-    username: username 
-    password: password 
-
-target:
-    host: 0.0.0.0:1323
-
-authen:
-    usernames:
-        - dome
-        - blank
-    secret:
-        - secret
-
-    expire: 2020-01-01
-
-logging:
-    level: debug
-    stdout: true
-    dirname: "/logs"
-```
-
-***
-### WarehouseCloning_Config
-
-**source**
-> source of api to connect
-
-```yaml
-source:
-    host: "https://url/path/path" #path to connection
-    token: "token" #token for authentication to api
-    consumers: 20 #integer for number of consumer
-    wait: 60 #time for wait when it return http res 429 
-    attempts: 10 #limit when it found 429
-```
-**target**
-> target database to collect data
-```yaml
-target:
-    database: warehouse_mongo #database name
-    host: "mongodb://warehouse_mongo:27017" #database port
-    username: username #username db
-    password: password #password db
-```
-**Exchange**
-> exchange that you want to collect data
-
-```yaml
-exchanges: 
-   - exchange1
-   - exchange2
-   - exchange3 #list of exchange
-```
-**documents**
-
->document that you want to get the data
-
-```yaml
-documents:
-    - "profile" #CompanyProfile
-    - "financials" #financial statement
-    - "candle"  #Candle by daily
-    # list of document
-```
-**log**
-> log position and log level
-
-```yaml
-logging:
-    level: level #level to log (debug,error)
-    stdout: true #true,false log or not
-    dirname: /dir/to/log #directory to log
-```
-
-***Example***
-
-```yaml
-source:
-    host: "https://finnhub.io/api/v1/"
-    token: "token"
-    consumers: 20
-    wait: 60
-    attempts: 10
-
-target:
-    database: warehouse_mongo
-    host: "mongodb://warehouse_mongo:27017"
-    username: admin
-    password: admin
+    database: warehouse_mongo               # database name
+    host: "mongodb://warehouse_mongo:27017" # database host on docker network
+    username: admin                         # username
+    password: admin                         # password
     
-exchanges: 
+exchanges:                                  # list of exchanges of interest
     - "US"
     - "BK"
     - "L"
@@ -252,136 +60,150 @@ exchanges:
     - "SZ"
     - "SG"
 
-documents:
+documents:                                # list of documents of interest
     - "profile"
     - "financials"
+    - "candle"
 
 logging:
-    level: debug
-    stdout: true
-    Dirname: "/logs" 
+    level: debug                          # log level {debug, error}
+    stdout: true                          # log to stdout {true, false}
+    dirname: "/logs"                      # log directory
+    
 ```
-***
-## Api
-- [**Token**](###Token)
-- [**Datamart api**](###Datamart)
-- [**Warehouse api**](###Warehouse)
 
-### **Token**
-- the token will use all of path that have **/api/** 
-#### how to get token
-- token for warehouse api use on port **1323**
-```
-http://18.141.209.89:1323/token?username={username}
-```
-- token for datamart api use on port **1324**
-```
-http://18.141.209.89:1324/token?username={username}
-```
-***
+### Warehouse API configuration
+```yaml
+source:
+    database: warehouse_mongo             # database name
+    host: mongodb://warehouse_mongo:27017 # database host on docker network
+    username: admin                       # username
+    password: admin                       # password
 
-### **Datamart**
-This is api for collect scores of stock data it have
-- [**replace**](####Replace) for replace data in score
-- [**update**](####Update) for update data in score
-- [**find**](####Find) for find score data in database
+target:
+    host: 0.0.0.0:1323
 
-#### Replace
-> It was **PUT** method so you have to request and sent data in body with token
+authen:
+    usernames:                            # list of authorized users
+        - dome                            # username
+        - blank                           # username
+        - yort                            # username
+    secret: 
+        - secret                          # secret for token generation
+    expire: 2030-01-01                    # token expiration date (yyyy-mm-dd)
+
+logging:
+    level: debug                          # log level {debug, error}
+    stdout: true                          # log to stdout {true, false}
+    dirname: "/logs"                      # log directory
 ```
-http://18.141.209.89:1324/api/replace?expert={expertname}&tag={tag version}
+
+### Datamart API configuration
+```yaml
+source:
+    database: datamart_mongo              # database name
+    host: mongodb://datamart_mongo:27017  # database host on docker network
+    username: admin                       # username
+    password: admin                       # password
+
+target:
+    host: 0.0.0.0:1323                    # server binding port
+
+authen:
+    usernames:                            # list of authorized users
+        - dome                            # username
+        - blank                           # username
+    secret: 
+        - secret                          # secret for token generation
+    expire: 2030-01-01                    # token expiration date (yyyy-mm-dd)
+
+logging:
+    level: debug                          # log level {debug, error}
+    stdout: true                          # log to stdout {true, false}
+    dirname: "/logs"                      # log directory
 ```
-- you have to send with **Token**
 
-- body must be **List** of **JSON** 
+Note that the port **1323** on the Docker container is mapped to the port **1324** on the host machine as defined in `docker-compose.yml`.
 
-- in body should have 
-    ```JSON
+## APIs
+### Warehouse API reference
+
+Use the following to retrieve an authentication token:
+> GET /token?username={username}
+
+where {username} is one of the [authorized users](#warehouse-api-configuration) 
+
+The following endpoints require `username` and authentication `token` attached in the request **header**.
+
+To retrieve a list of securities available in an exchange:
+> GET /api/symbols?exchange={exchange}
+
+To retrieve a company profile:
+> GET /api/profile?exchange={exchange}&symbol={symbol}
+
+To retrieve a financial statement:
+> GET /api/financials/{statement}/{frequency}?exchange={exchange}&symbol={symbol}
+
+where {statement} can be one of `bs, ic, cf` representing balance sheet, income statement, and cash flow statement, respectively, and {frequency} can be `annual, quarterly, ttm, ytd`.
+
+To retrieve the historical prices (OHLC):
+> GET /api/candle?exchange={exchange}&symbol={symbol}
+
+To search for symbols:
+> GET /api/search?symbol={symbol}&text={text}&limit={limit}
+
+- If only {symbol} is provided, return securities whose symbol contains {symbol} as a substring. 
+- If only {text} is provided, return securities whose symbol **or** description contains {text} as a substring. 
+- If {symbol} and {text} are provided, return securities whose symbol contains {symbol} as a substring **and** description contains {text} as a substring. 
+* If {limit} is provided, return a maximum of {limit} securities, ordered alphabetically by symbols.
+
+### Datamart API reference
+
+Use the following to retrieve an authentication token:
+> GET /token?username={username}
+
+where {username} is one of the [authorized users](#datamart-api-configuration) 
+
+The following endpoints require `username` and authentication `token` attached in the request **header**.
+
+To upload the data:
+> PUT /api/replace?expert={expert}&tag={tag}
+> PUT /api/update?expert={expert}&tag={tag}
+
+where {expert} is the name of the human expert publishing the data, and {tag} is used for versioning the data. When data is uploaded, it will be tagged with {tag} and additionally `latest`.  The data must be a list of JSON objects attached to the request **body**, for example:
+```JSON
     [
         {
-            "Exchange": "us",
-            "Symbol": "appl",
-            "Data": {
-                "date": [],
-                "scores": []
+            "exchange": "us",
+            "symbol": "appl",
+            "data": {
+                "dates": [...],
+                "scores": [...]
             }
-        }
-    ]
-    ```
-
-#### Update
-> It was **PUT** method so you have to request and sent data in body with token
-```
-http://18.141.209.89:1324/api/update?expert={expertname}&tag={tag version}
-```
-- you have to send with **Token**
-
-- body must be **List** of **JSON** 
-
-- in body should have 
-    ```JSON
-    [
+        },
         {
-            "Exchange": "us",
-            "Symbol": "appl",
-            "Data": {
-                "date": [],
-                "scores": []
+            "exchange": "us",
+            "symbol": "amzn",
+            "data": {
+                "dates": [...],
+                "scores": [...]
             }
-        }
+        },
     ]
-    ```
+```
+The difference between `/api/replace` and `/api/update` arises from the different mechanisms between [replaceOne](https://docs.mongodb.com/manual/reference/method/db.collection.replaceOne/) and [updateOne](https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/) of MongoDB.
 
-#### Find
-> This is **GET** method so you have to request in Correct path and query param you will recieve correct data
+To download the data for securities associated with the expert and tag:
+> GET /api/find?expert={expert}&tag={tag}&exchange={exchange}&symbol={symbol}
 
-```
-http://18.141.209.89:1324/api/find?tag={tag version}&expert={expertname}&exchange={exchange}&symbol={symbol}
-```
-- **expert** is fix query to find
-- **tag** is not fix to use but if you not set tag vesion it will send **"lastest"** version
-- **exchange & symbol** not fix to send if you not set it will return all data that match
+* The parameter {expert} is required.
+* The parameter {tag} is optional and set to `latest` if omitted.
+* If {exchange} and {symbol} optional, apply as additional filters when provided.
 
-***
+## Managing Databases
 
-### **Warehouse**
-This is Api for collect data that collect from **finnhub** by **Warehouse cloning**
-- [**Profile**](####Profile) **GET** company profile
-- [**Financial**](####Financial) **GET** financial statement
-- [**Candle**](####Candle) **GET** candle daily
-- [**Search**](####Search) **GET** Company symbol and name by text or by symbol
-- [**Symbol**](####Symbol) **GET** list of symbol from Exchange
+### Warehouse Mongo Express
+*Warehouse Cloning* and *Warehouse API* share the same database `warehouse_mongo` which (by default) is binded to port 27017 on the host machine. To access the web-based database management system, reach the host machine on port **8081**.
 
-#### Profile
-
-```
-http://18.141.209.89:1323/api/profile?symbol={symbol};&exchange={exchange}
-```
-- **symbol & exchange** are query params
-
-#### Financial
-```
-http://18.141.209.89:1323/api/financials/{statement}/{frequency}?symbol={symbol}&exchange={exchange}
-```
-- **statement** have ```bs,ic,cf```
-- **frequency** have ```annual, quarterly, ttm, ytd```
-- **symbol & exchange** are query params
-#### Candle
-```
-http://18.141.209.89:1323/api/candle?symbol={symbol}&exchange={exchange}
-```
-- **symbol & exchange** are query params
-- **Data** was price in day by day but start from last 10 years
-#### Search
-```
-http://18.141.209.89:1323/api/search?symbol={symbol}&text={text}&limit={limit}
-```
-- **limit** it can limit number of data when was search. If you not use it will send all data that match
-- **text & symbol** if you use only text it will find name of company or symbol base on text however if you use with symbol or use only symbol it will find only symbol in data 
-#### Symbol
-```
-http://18.141.209.89:1323/api/symbols?exchange={exchange}
-```
-- it use only **exchange** for find
-- It will return with **list** of **symbol** 
-***
+### Datamart Mongo Express
+*Datamart API* use the database `datamart_mongo` which (by default) is binded to port 27018 on the host machine. To access the web-based database management system, reach the host machine on port **8082**.
