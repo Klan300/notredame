@@ -173,7 +173,7 @@ logging:
 ***
 ### WarehouseCloning_Config
 
-#### source
+**source**
 > source of api to connect
 
 ```yaml
@@ -184,7 +184,7 @@ source:
     wait: 60 #time for wait when it return http res 429 
     attempts: 10 #limit when it found 429
 ```
-#### target
+**target**
 > target database to collect data
 ```yaml
 target:
@@ -193,7 +193,7 @@ target:
     username: username #username db
     password: password #password db
 ```
-#### Exchange
+**Exchange**
 > exchange that you want to collect data
 
 ```yaml
@@ -202,7 +202,7 @@ exchanges:
    - exchange2
    - exchange3 #list of exchange
 ```
-#### documents
+**documents**
 
 >document that you want to get the data
 
@@ -213,7 +213,7 @@ documents:
     - "candle"  #Candle by daily
     # list of document
 ```
-#### log
+**log**
 > log position and log level
 
 ```yaml
@@ -263,8 +263,22 @@ logging:
 ```
 ***
 ## Api
+- [**Token**](###Token)
 - [**Datamart api**](###Datamart)
 - [**Warehouse api**](###Warehouse)
+
+### **Token**
+- the token will use all of path that have **/api/** 
+#### how to get token
+- token for warehouse api use on port **1323**
+```
+http://18.141.209.89:1323/token?username={username}
+```
+- token for datamart api use on port **1324**
+```
+http://18.141.209.89:1324/token?username={username}
+```
+***
 
 ### **Datamart**
 This is api for collect scores of stock data it have
@@ -277,11 +291,11 @@ This is api for collect scores of stock data it have
 ```
 http://18.141.209.89:1324/api/replace?expert={expertname}&tag={tag version}
 ```
-[ ] you have to send with **Token**
+- you have to send with **Token**
 
-[ ] body must be **List** of **JSON** 
+- body must be **List** of **JSON** 
 
-[ ] in body should have 
+- in body should have 
     ```JSON
     [
         {
@@ -300,12 +314,12 @@ http://18.141.209.89:1324/api/replace?expert={expertname}&tag={tag version}
 ```
 http://18.141.209.89:1324/api/update?expert={expertname}&tag={tag version}
 ```
-[ ] you have to send with **Token**
+- you have to send with **Token**
 
-[ ] body must be **List** of **JSON** 
+- body must be **List** of **JSON** 
 
-[ ] in body should have 
-```JSON
+- in body should have 
+    ```JSON
     [
         {
             "Exchange": "us",
@@ -316,7 +330,7 @@ http://18.141.209.89:1324/api/update?expert={expertname}&tag={tag version}
             }
         }
     ]
-```
+    ```
 
 #### Find
 > This is **GET** method so you have to request in Correct path and query param you will recieve correct data
@@ -324,11 +338,50 @@ http://18.141.209.89:1324/api/update?expert={expertname}&tag={tag version}
 ```
 http://18.141.209.89:1324/api/find?tag={tag version}&expert={expertname}&exchange={exchange}&symbol={symbol}
 ```
-[ ] **expert** is fix query to find
-[ ] **tag** is not fix to use but if you not set tag vesion it will send **"lastest"** version
-[ ] **exchange & symbol** not fix to send if you not set it will return all data that match
+- **expert** is fix query to find
+- **tag** is not fix to use but if you not set tag vesion it will send **"lastest"** version
+- **exchange & symbol** not fix to send if you not set it will return all data that match
 
 ***
 
 ### **Warehouse**
+This is Api for collect data that collect from **finnhub** by **Warehouse cloning**
+- [**Profile**](####Profile) **GET** company profile
+- [**Financial**](####Financial) **GET** financial statement
+- [**Candle**](####Candle) **GET** candle daily
+- [**Search**](####Search) **GET** Company symbol and name by text or by symbol
+- [**Symbol**](####Symbol) **GET** list of symbol from Exchange
 
+#### Profile
+
+```
+http://18.141.209.89:1323/api/profile?symbol={symbol};&exchange={exchange}
+```
+- **symbol & exchange** are query params
+
+#### Financial
+```
+http://18.141.209.89:1323/api/financials/{statement}/{frequency}?symbol={symbol}&exchange={exchange}
+```
+- **statement** have ```bs,ic,cf```
+- **frequency** have ```annual, quarterly, ttm, ytd```
+- **symbol & exchange** are query params
+#### Candle
+```
+http://18.141.209.89:1323/api/candle?symbol={symbol}&exchange={exchange}
+```
+- **symbol & exchange** are query params
+- **Data** was price in day by day but start from last 10 years
+#### Search
+```
+http://18.141.209.89:1323/api/search?symbol={symbol}&text={text}&limit={limit}
+```
+- **limit** it can limit number of data when was search. If you not use it will send all data that match
+- **text & symbol** if you use only text it will find name of company or symbol base on text however if you use with symbol or use only symbol it will find only symbol in data 
+#### Symbol
+```
+http://18.141.209.89:1323/api/symbols?exchange={exchange}
+```
+- it use only **exchange** for find
+- It will return with **list** of **symbol** 
+***
