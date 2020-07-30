@@ -30,7 +30,7 @@ $git pull
 $cd notredame
 $docker-compose up -d
 ```
-
+***
 ## Config
 - [**Datamart Api**](###DatamartApi_Config)
 - [**Warehouse Api**](###WarehouseApi_Config)
@@ -101,7 +101,7 @@ logging:
     stdout: true
     dirname: "/logs"
 ```
-
+***
 ### WarehouseApi_Config
 
 **source**
@@ -170,7 +170,7 @@ logging:
     dirname: "/logs"
 ```
 
-
+***
 ### WarehouseCloning_Config
 
 **source**
@@ -261,5 +261,74 @@ logging:
     stdout: true
     Dirname: "/logs" 
 ```
-
+***
 ## Api
+- [**Datamart api**](###Datamart)
+- [**Warehouse api**](###Warehouse)
+
+### **Datamart**
+This is api for collect scores of stock data it have
+- [**replace**](####Replace) for replace data in score
+- [**update**](####Update) for update data in score
+- [**find**](####Find) for find score data in database
+
+#### Replace
+> It was **PUT** method so you have to request and sent data in body with token
+```
+http://18.141.209.89:1324/api/replace?expert={expertname}&tag={tag version}
+```
+- you have to send with **Token**
+
+- body must be **List** of **JSON** 
+
+- in body should have 
+    ```JSON
+    [
+        {
+            "Exchange": "us",
+            "Symbol": "appl",
+            "Data": {
+                "date": [],
+                "scores": []
+            }
+        }
+    ]
+    ```
+
+#### Update
+> It was **PUT** method so you have to request and sent data in body with token
+```
+http://18.141.209.89:1324/api/update?expert={expertname}&tag={tag version}
+```
+- you have to send with **Token**
+
+- body must be **List** of **JSON** 
+
+- in body should have 
+    ```JSON
+    [
+        {
+            "Exchange": "us",
+            "Symbol": "appl",
+            "Data": {
+                "date": [],
+                "scores": []
+            }
+        }
+    ]
+    ```
+
+#### Find
+> This is **GET** method so you have to request in Correct path and query param you will recieve correct data
+
+```
+http://18.141.209.89:1324/api/find?tag={tag version}&expert={expertname}&exchange={exchange}&symbol={symbol}
+```
+- **expert** is fix query to find
+- **tag** is not fix to use but if you not set tag vesion it will send **"lastest"** version
+- **exchange & symbol** not fix to send if you not set it will return all data that match
+
+***
+
+### **Warehouse**
+
